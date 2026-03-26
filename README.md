@@ -4,9 +4,9 @@
   <a href="https://github.com/yorukokan/Duygu-Tabanli-Oneri-Mobil-Uygulama">
     <img src="https://img.shields.io/badge/GitHub-Kaynak_Kodlar-181717?style=for-the-badge&logo=github" />
   </a>
+  <a href="https://erbakan.edu.tr/tr/birim/bilgisayar-muhendisligi-bolumu/anasayfa">
   <img src="https://img.shields.io/badge/Necmettin%20Erbakan%20Üniversitesi-Bilgisayar%20Mühendisliği-005195?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white" />
-  <img src="https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white" />
+  </a>
 </p>
 
 ---
