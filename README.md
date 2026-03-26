@@ -1,5 +1,15 @@
 # 🧠 Duygu Durumu Analizi ile Kişiselleştirilmiş Beslenme ve Aktivite Önerisi Sunan Yapay Zekâ Destekli Mobil Uygulama
 
+<p align="center">
+  <a href="https://github.com/yorukokan/Duygu-Tabanli-Oneri-Mobil-Uygulama">
+    <img src="https://img.shields.io/badge/GitHub-Kaynak_Kodlar-181717?style=for-the-badge&logo=github" />
+  </a>
+  <img src="https://img.shields.io/badge/Necmettin%20Erbakan%20Üniversitesi-Bilgisayar%20Mühendisliği-005195?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white" />
+  <img src="https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white" />
+</p>
+
+---
 ## 📌 Proje Hakkında (Özgün Değer)
 Günümüzde bireylerin beslenme ve fiziksel aktivite tercihleri; stres, kaygı ve motivasyon gibi ruhsal faktörlerden doğrudan etkilenmektedir. Bu projenin **özgün değeri**, mevcut sağlık uygulamalarının aksine, kullanıcının anlık ruh halini analiz sürecine dahil eden bütünsel bir dijital destek sistemi sunmasıdır.
 
