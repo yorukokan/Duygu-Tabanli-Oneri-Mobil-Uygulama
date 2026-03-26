@@ -1,0 +1,1159 @@
+{
+  "duygu_kutuphanesi": [
+    {
+      "label_id": 0,
+      "duygu_adi": "Yüksek Stres",
+      "beslenme_genel_ozet": "Magnezyum, antioksidanlar ve omega-3 içerikli gıdalar kortizol seviyesini düşürür, sinir sistemini dengeler ve inflamasyonu azaltır.",
+      "aktivite_genel_ozet": "Ritmik hareketler ve duyusal rahatlama egzersizleri kortizolü düşürür, endorfin salgısını artırır.",
+      "beslenme_onerileri": [
+        {
+          "isim": "Bitter Çikolatalı & Muzlu Yulaf Kasesi",
+          "kart_kisa_aciklama": "Magnezyum bombası ile kortizolü anında dengele.",
+          "bilimsel_fayda_detay": "Bitter çikolatadaki magnezyum stres hormonlarını baskılarken, yulaf kan şekerini sabitler.",
+          "tuketim_onerisi": "3 yemek kaşığı yulafı az sıcak suyla ıslat, üzerine yarım muz dilimle ve 2 kare ufalanmış bitter çikolata ekle.",
+          "gorsel_url": "https://images.unsplash.com/photo-1511381939415-e44015466834",
+          "icerik_etiketleri": ["Gluten", "Kakao", "Muz"],
+          "riskli_hastaliklar": ["Diyabet"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Naneli ve Limonlu Buzlu Yeşil Çay",
+          "kart_kisa_aciklama": "L-teanin amino asidi ile ferahlayarak zihinsel rahatlama sağla.",
+          "bilimsel_fayda_detay": "Yeşil çaydaki L-teanin sinir sistemini uyku hali yapmadan yatıştırır.",
+          "tuketim_onerisi": "1 fincan yeşil çayı demleyip buzla soğut. İçine yarım limon sık ve birkaç taze nane yaprağı atarak iç.",
+          "gorsel_url": "https://images.unsplash.com/photo-1544787210-2211d44b565a",
+          "icerik_etiketleri": ["Kafein", "Nane", "Limon"],
+          "riskli_hastaliklar": ["Tansiyon", "Mide Ülseri"],
+          "ozel_durum_uyarisi": ["Hamilelikte Sınırlı Tüketim"]
+        },
+        {
+          "isim": "Cevizli ve Tarçınlı Süzme Yoğurt",
+          "kart_kisa_aciklama": "Omega-3 yağ asitleriyle sinir sisteminin yangısını al.",
+          "bilimsel_fayda_detay": "Ceviz omega-3 sağlar. Yoğurt ile birleştiğinde anlık tatlı krizini sağlıklı yoldan çözer.",
+          "tuketim_onerisi": "1 kase süzme yoğurdun içine 3 tam cevizi kır, üzerine hafif tarçın serperek tüket.",
+          "gorsel_url": "https://images.unsplash.com/photo-1585129049162-71fa2b20455f",
+          "icerik_etiketleri": ["Laktoz", "Kuruyemiş", "Tarçın"],
+          "riskli_hastaliklar": ["Laktoz İntoleransı"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Orman Meyveli Hızlı Smoothie",
+          "kart_kisa_aciklama": "Güçlü antioksidan kaynağıyla oksidatif stresi saniyeler içinde önle.",
+          "bilimsel_fayda_detay": "Stres anında vücutta artan kortizolü, meyvelerdeki antioksidanlarla bloke eder.",
+          "tuketim_onerisi": "Bir avuç taze veya dondurulmuş yaban mersinini yarım bardak sütle blenderdan geçirip soğuk iç.",
+          "gorsel_url": "https://images.unsplash.com/photo-1498557850523-fd3d118b962e",
+          "icerik_etiketleri": ["Laktoz", "Orman Meyvesi"],
+          "riskli_hastaliklar": [],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Kuru İncir ve Çiğ Badem",
+          "kart_kisa_aciklama": "Mideyi yormadan ani enerji ve sakinlik sağla.",
+          "bilimsel_fayda_detay": "Potasyum ve magnezyum birleşimi kan basıncını düzenleyerek fiziksel rahatlama sunar.",
+          "tuketim_onerisi": "Gergin anlarda 2 adet kuru incir ile 5-6 adet çiğ bademi yavaşça çiğneyerek tüket.",
+          "gorsel_url": "https://images.unsplash.com/photo-1508061263366-c7bb3cc270bb",
+          "icerik_etiketleri": ["Kuruyemiş", "İncir"],
+          "riskli_hastaliklar": ["Diyabet"],
+          "ozel_durum_uyarisi": []
+        }
+      ],
+      "aktivite_onerileri": [
+        {
+          "isim": "Açık Havada Tempolu Yürüyüş",
+          "kart_kisa_aciklama": "Mekan değiştirerek fiziksel gerginliği bacaklarından at.",
+          "bilimsel_fayda_detay": "Hafif kardiyo egzersizi, beyne giden oksijen miktarını artırır ve stresi baskılar.",
+          "uygulama_onerisi": "Sadece 15 dakikalığına dışarı çık ve hiçbir şey düşünmeden tempolu bir şekilde yürü.",
+          "gorsel_url": "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8",
+          "riskli_hastaliklar": ["İleri Derece Eklem Rahatsızlığı", "Şiddetli Astım"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Doğal Sesler Dinleme",
+          "kart_kisa_aciklama": "İşitsel uyaranlarla zihinsel yorgunluğu hafifletin.",
+          "bilimsel_fayda_detay": "Su veya orman sesleri gibi doğal ritimler, beynin dinlenme durumuna geçişini kolaylaştırır.",
+          "uygulama_onerisi": "Gözlerinizi kapatın ve kulaklıkla 10 dakika boyunca okyanus veya orman sesleri dinleyin.",
+          "gorsel_url": "https://images.unsplash.com/photo-1506126613408-eca07ce68773",
+          "riskli_hastaliklar": [],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Boyun ve Ense Masajı",
+          "kart_kisa_aciklama": "Stresin fiziksel olarak biriktiği noktaları yumuşat.",
+          "bilimsel_fayda_detay": "Kaslara uygulanan dairesel baskı, beyne tehlikenin geçtiği ve bedenin güvende olduğu sinyalini verir.",
+          "uygulama_onerisi": "Parmak uçlarınla ensene, omuzlarına ve şakaklarına 3-4 dakika boyunca hafif baskılı masaj yap.",
+          "gorsel_url": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b",
+          "riskli_hastaliklar": ["Boyun Fıtığı"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Gürültülü Bir Şarkıya Eşlik Etmek",
+          "kart_kisa_aciklama": "Ses tellerinizi kullanarak içsel basıncı dışarı atın.",
+          "bilimsel_fayda_detay": "Yüksek sesle şarkı söylemek vagus sinirini uyararak bedenin rahatlama moduna geçmesini sağlar.",
+          "uygulama_onerisi": "Odanın kapısını kapat, en sevdiğin hareketli şarkıyı son ses aç ve bağırarak eşlik et.",
+          "gorsel_url": "https://images.unsplash.com/photo-1514525253361-b83f859b71c2",
+          "riskli_hastaliklar": ["Ses Teli Rahatsızlıkları"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Ayakta Tüm Vücudu Gerdirerek Esneme",
+          "kart_kisa_aciklama": "Düğümlenen kasları mekanik olarak çözün.",
+          "bilimsel_fayda_detay": "Stres anında kasılan kasların esnetilmesi kortizol üretimini fiziksel olarak yavaşlatır.",
+          "uygulama_onerisi": "Ayağa kalk, kollarını tavana doğru iyice uzatıp tüm bedenini ger, ardından serbest bırak.",
+          "gorsel_url": "https://images.unsplash.com/photo-1552196564-972b49916d44",
+          "riskli_hastaliklar": ["İleri Derece Bel Fıtığı"],
+          "ozel_durum_uyarisi": ["Hamileliğin Son Ayları"]
+        }
+      ]
+    },
+    {
+      "label_id": 1,
+      "duygu_adi": "Öfke / Gerginlik",
+      "beslenme_genel_ozet": "Magnezyum, antioksidanlar ve omega-3 içerikli gıdalar kortizol seviyesini düşürür, sinir sistemini dengeler ve inflamasyonu azaltır.",
+      "aktivite_genel_ozet": "Ritmik hareketler ve duyusal rahatlama egzersizleri kortizolü düşürür, endorfin salgısını artırır.",
+      "beslenme_onerileri": [
+        {
+          "isim": "Bitter Çikolatalı & Muzlu Yulaf Kasesi",
+          "kart_kisa_aciklama": "Magnezyum bombası ile kortizolü anında dengele.",
+          "bilimsel_fayda_detay": "Bitter çikolatadaki magnezyum stres hormonlarını baskılarken, yulaf kan şekerini sabitler.",
+          "tuketim_onerisi": "3 yemek kaşığı yulafı az sıcak suyla ıslat, üzerine yarım muz dilimle ve 2 kare ufalanmış bitter çikolata ekle.",
+          "gorsel_url": "https://images.unsplash.com/photo-1511381939415-e44015466834",
+          "icerik_etiketleri": ["Gluten", "Kakao", "Muz"],
+          "riskli_hastaliklar": ["Diyabet"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Naneli ve Limonlu Buzlu Yeşil Çay",
+          "kart_kisa_aciklama": "L-teanin amino asidi ile ferahlayarak zihinsel rahatlama sağla.",
+          "bilimsel_fayda_detay": "Yeşil çaydaki L-teanin sinir sistemini uyku hali yapmadan yatıştırır.",
+          "tuketim_onerisi": "1 fincan yeşil çayı demleyip buzla soğut. İçine yarım limon sık ve birkaç taze nane yaprağı atarak iç.",
+          "gorsel_url": "https://images.unsplash.com/photo-1544787210-2211d44b565a",
+          "icerik_etiketleri": ["Kafein", "Nane", "Limon"],
+          "riskli_hastaliklar": ["Tansiyon", "Mide Ülseri"],
+          "ozel_durum_uyarisi": ["Hamilelikte Sınırlı Tüketim"]
+        },
+        {
+          "isim": "Cevizli ve Tarçınlı Süzme Yoğurt",
+          "kart_kisa_aciklama": "Omega-3 yağ asitleriyle sinir sisteminin yangısını al.",
+          "bilimsel_fayda_detay": "Ceviz omega-3 sağlar. Yoğurt ile birleştiğinde anlık tatlı krizini sağlıklı yoldan çözer.",
+          "tuketim_onerisi": "1 kase süzme yoğurdun içine 3 tam cevizi kır, üzerine hafif tarçın serperek tüket.",
+          "gorsel_url": "https://images.unsplash.com/photo-1585129049162-71fa2b20455f",
+          "icerik_etiketleri": ["Laktoz", "Kuruyemiş", "Tarçın"],
+          "riskli_hastaliklar": ["Laktoz İntoleransı"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Orman Meyveli Hızlı Smoothie",
+          "kart_kisa_aciklama": "Güçlü antioksidan kaynağıyla oksidatif stresi saniyeler içinde önle.",
+          "bilimsel_fayda_detay": "Stres anında vücutta artan kortizolü, meyvelerdeki antioksidanlarla bloke eder.",
+          "tuketim_onerisi": "Bir avuç taze veya dondurulmuş yaban mersinini yarım bardak sütle blenderdan geçirip soğuk iç.",
+          "gorsel_url": "https://images.unsplash.com/photo-1498557850523-fd3d118b962e",
+          "icerik_etiketleri": ["Laktoz", "Orman Meyvesi"],
+          "riskli_hastaliklar": [],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Kuru İncir ve Çiğ Badem",
+          "kart_kisa_aciklama": "Mideyi yormadan ani enerji ve sakinlik sağla.",
+          "bilimsel_fayda_detay": "Potasyum ve magnezyum birleşimi kan basıncını düzenleyerek fiziksel rahatlama sunar.",
+          "tuketim_onerisi": "Gergin anlarda 2 adet kuru incir ile 5-6 adet çiğ bademi yavaşça çiğneyerek tüket.",
+          "gorsel_url": "https://images.unsplash.com/photo-1508061263366-c7bb3cc270bb",
+          "icerik_etiketleri": ["Kuruyemiş", "İncir"],
+          "riskli_hastaliklar": ["Diyabet"],
+          "ozel_durum_uyarisi": []
+        }
+      ],
+      "aktivite_onerileri": [
+        {
+          "isim": "Açık Havada Tempolu Yürüyüş",
+          "kart_kisa_aciklama": "Mekan değiştirerek fiziksel gerginliği bacaklarından at.",
+          "bilimsel_fayda_detay": "Hafif kardiyo egzersizi, beyne giden oksijen miktarını artırır ve stresi baskılar.",
+          "uygulama_onerisi": "Sadece 15 dakikalığına dışarı çık ve hiçbir şey düşünmeden tempolu bir şekilde yürü.",
+          "gorsel_url": "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8",
+          "riskli_hastaliklar": ["İleri Derece Eklem Rahatsızlığı", "Şiddetli Astım"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Doğal Sesler Dinleme",
+          "kart_kisa_aciklama": "İşitsel uyaranlarla zihinsel yorgunluğu hafifletin.",
+          "bilimsel_fayda_detay": "Su veya orman sesleri gibi doğal ritimler, beynin dinlenme durumuna geçişini kolaylaştırır.",
+          "uygulama_onerisi": "Gözlerinizi kapatın ve kulaklıkla 10 dakika boyunca okyanus veya orman sesleri dinleyin.",
+          "gorsel_url": "https://images.unsplash.com/photo-1506126613408-eca07ce68773",
+          "riskli_hastaliklar": [],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Boyun ve Ense Masajı",
+          "kart_kisa_aciklama": "Stresin fiziksel olarak biriktiği noktaları yumuşat.",
+          "bilimsel_fayda_detay": "Kaslara uygulanan dairesel baskı, beyne tehlikenin geçtiği ve bedenin güvende olduğu sinyalini verir.",
+          "uygulama_onerisi": "Parmak uçlarınla ensene, omuzlarına ve şakaklarına 3-4 dakika boyunca hafif baskılı masaj yap.",
+          "gorsel_url": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b",
+          "riskli_hastaliklar": ["Boyun Fıtığı"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Gürültülü Bir Şarkıya Eşlik Etmek",
+          "kart_kisa_aciklama": "Ses tellerinizi kullanarak içsel basıncı dışarı atın.",
+          "bilimsel_fayda_detay": "Yüksek sesle şarkı söylemek vagus sinirini uyararak bedenin rahatlama moduna geçmesini sağlar.",
+          "uygulama_onerisi": "Odanın kapısını kapat, en sevdiğin hareketli şarkıyı son ses aç ve bağırarak eşlik et.",
+          "gorsel_url": "https://images.unsplash.com/photo-1514525253361-b83f859b71c2",
+          "riskli_hastaliklar": ["Ses Teli Rahatsızlıkları"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Ayakta Tüm Vücudu Gerdirerek Esneme",
+          "kart_kisa_aciklama": "Düğümlenen kasları mekanik olarak çözün.",
+          "bilimsel_fayda_detay": "Stres anında kasılan kasların esnetilmesi kortizol üretimini fiziksel olarak yavaşlatır.",
+          "uygulama_onerisi": "Ayağa kalk, kollarını tavana doğru iyice uzatıp tüm bedenini ger, ardından serbest bırak.",
+          "gorsel_url": "https://images.unsplash.com/photo-1552196564-972b49916d44",
+          "riskli_hastaliklar": ["İleri Derece Bel Fıtığı"],
+          "ozel_durum_uyarisi": ["Hamileliğin Son Ayları"]
+        }
+      ]
+    },
+    {
+      "label_id": 2,
+      "duygu_adi": "Kaygı / Anksiyete",
+      "beslenme_genel_ozet": "Probiyotikler, magnezyum ve triptofan içeren gıdalar bağırsak-beyin ekseni üzerinden ruh halini düzenler ve gevşeme sağlar.",
+      "aktivite_genel_ozet": "Parasempatik sinir sistemini sakinleştiren basit eylemler, beyni panik modundan çıkarıp şimdiki ana getirir.",
+      "beslenme_onerileri": [
+        {
+          "isim": "Ballı Papatya Çayı",
+          "kart_kisa_aciklama": "Doğal bitkisel sakinleştirici ile göğsündeki sıkışmayı hafiflet.",
+          "bilimsel_fayda_detay": "Papatya çayı kas gevşemesi sağlar ve beyni rahatlatır.",
+          "tuketim_onerisi": "Suyu kaynatıp papatya çayını 3 dakika demle. Ilıklaştığında içine 1 çay kaşığı bal ekleyip yavaşça iç.",
+          "gorsel_url": "https://images.unsplash.com/photo-1596547609652-9cb5b4d45d5a",
+          "icerik_etiketleri": ["Bal", "Papatya"],
+          "riskli_hastaliklar": ["Papatya Alerjisi"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Muzlu ve Tarçınlı Kefir",
+          "kart_kisa_aciklama": "Bağırsak-beyin eksenini destekleyerek midendeki düğümü çöz.",
+          "bilimsel_fayda_detay": "Kefirdeki probiyotikler serotonin üretimine yardım ederken, muz triptofan sağlar.",
+          "tuketim_onerisi": "1 bardak soğuk kefirin içine yarım muzu ezerek karıştır, üzerine hafif tarçın serperek anında iç.",
+          "gorsel_url": "https://images.unsplash.com/photo-1517055729443-34e85741f0eb",
+          "icerik_etiketleri": ["Laktoz", "Muz", "Tarçın"],
+          "riskli_hastaliklar": ["Laktoz İntoleransı"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Kabak Çekirdekli Elma Dilimleri",
+          "kart_kisa_aciklama": "Magnezyum ile sinirlerini frenle ve çiğneme refleksini tatmin et.",
+          "bilimsel_fayda_detay": "Kabak çekirdeği magnezyum kaynağıdır. Çiğneme eylemi ise beyne güvende olduğun mesajını verir.",
+          "tuketim_onerisi": "1 elmayı dilimle, üzerine bir avuç içi kadar tuzsuz kabak çekirdeği serpiştirerek atıştır.",
+          "gorsel_url": "https://images.unsplash.com/photo-1567306226416-28f0efdc88ce",
+          "icerik_etiketleri": ["Çekirdek", "Elma"],
+          "riskli_hastaliklar": [],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Sıcak Yulaf Lapası (Süt ve Tarçınla)",
+          "kart_kisa_aciklama": "Kan şekerini stabilize ederek ani kaygı krizlerini önle.",
+          "bilimsel_fayda_detay": "Kompleks karbonhidratlar beyne düzenli enerji göndererek kaygı dalgalanmalarını engeller.",
+          "tuketim_onerisi": "Bir cezvede yarım bardak süt ve 3 kaşık yulafı 2 dakika pişir, ılık bir lapa olarak tüket.",
+          "gorsel_url": "https://images.unsplash.com/photo-1586439702132-707d37435390",
+          "icerik_etiketleri": ["Gluten", "Laktoz", "Tarçın"],
+          "riskli_hastaliklar": ["Çölyak", "Laktoz İntoleransı"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Naneli Soğuk Cacık / Yoğurt",
+          "kart_kisa_aciklama": "Mideni serinlet ve sindirim sistemini rahatlat.",
+          "bilimsel_fayda_detay": "Kaygının midede yarattığı spazmı ve asidi probiyotik ile nötralize eder.",
+          "tuketim_onerisi": "Bir kase yoğurdun içine nane ve az tuz ekleyip yavaş yavaş tüket.",
+          "gorsel_url": "https://images.unsplash.com/photo-1488477181946-6428a0291777",
+          "icerik_etiketleri": ["Laktoz", "Nane"],
+          "riskli_hastaliklar": ["Laktoz İntoleransı"],
+          "ozel_durum_uyarisi": []
+        }
+      ],
+      "aktivite_onerileri": [
+        {
+          "isim": "4-7-8 Nefes Egzersizi",
+          "kart_kisa_aciklama": "Nabzını donanım seviyesinde yavaşlatarak panik hissini kes.",
+          "bilimsel_fayda_detay": "Bu nefes tekniği parasempatik sinir sistemine acil 'rahatla' komutu gönderir.",
+          "uygulama_onerisi": "4 saniye nefes al, 7 saniye tut, 8 saniyede ıslık çalar gibi yavaşça ver. Bunu 4 kez tekrarla.",
+          "gorsel_url": "https://images.unsplash.com/photo-1506126613408-eca07ce68773",
+          "riskli_hastaliklar": ["İleri Derece KOAH"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Oturarak Hafif Omuz ve Boyun Esnemesi",
+          "kart_kisa_aciklama": "Bedenini sıkarak yarattığın kilitlenmeyi çöz.",
+          "bilimsel_fayda_detay": "Fiziksel gerginliği serbest bırakmak, beynin kaygı üretme mekanizmasını yavaşlatır.",
+          "uygulama_onerisi": "Bulunduğun yerde otururken sırtını dikleştir, boynunu ve omuzlarını çok yavaşça çevir.",
+          "gorsel_url": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b",
+          "riskli_hastaliklar": ["Boyun Fıtığı"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Düşünceleri Kağıda Dökmek",
+          "kart_kisa_aciklama": "Kafanın içindeki gürültüyü fiziksel bir ortama aktar.",
+          "bilimsel_fayda_detay": "Kaygıları yazmak, beynin olayları rasyonel kortekste işlemesini sağlayarak duygusal yükü azaltır.",
+          "uygulama_onerisi": "Bir kağıt al ve şu an seni neyin kaygılandırdığını kimseye göstermeyecekmiş gibi yaz.",
+          "gorsel_url": "https://images.unsplash.com/photo-1517842645767-c639042777db",
+          "riskli_hastaliklar": [],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Dikkat Dağıtıcı Basit Bir Oyun Oynamak",
+          "kart_kisa_aciklama": "Beyninin ön lobunu meşgul ederek kaygı döngüsünü kır.",
+          "bilimsel_fayda_detay": "Tetris gibi oyunlar travmatik veya kaygılı düşüncelerin beyinde yer tutmasını engeller.",
+          "uygulama_onerisi": "Telefondan Tetris veya benzeri bir bulmaca oyununu 10 dakika boyunca oyna.",
+          "gorsel_url": "https://images.unsplash.com/photo-1534158914592-062992fbe900",
+          "riskli_hastaliklar": ["Migren (Ekrana Bakmak Tetikliyorsa)"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "5-4-3-2-1 Topraklanma Egzersizi",
+          "kart_kisa_aciklama": "Zihnini korkutan düşüncelerden çekip şimdiki ana getir.",
+          "bilimsel_fayda_detay": "Duyuları bilinçli kullanmak, beynin amigdala (korku merkezi) aktivitesini durdurur.",
+          "uygulama_onerisi": "Etrafında gördüğün 5 rengi, duyduğun 4 sesi, dokunduğun 3 dokuyu içinden say.",
+          "gorsel_url": "https://images.unsplash.com/photo-1512314889357-e157c22f938d",
+          "riskli_hastaliklar": [],
+          "ozel_durum_uyarisi": []
+        }
+      ]
+    },
+    {
+      "label_id": 3,
+      "duygu_adi": "Düşük Enerji / Yorgunluk",
+      "beslenme_genel_ozet": "Kompleks karbonhidratlar ve su oranı yüksek besinler kan şekerini dengeler, hücrelere sürdürülebilir enerji sağlar.",
+      "aktivite_genel_ozet": "Bedeni zorlamadan kan dolaşımını canlandıran pratik hareketler, uyku halini ve enerji üretimini destekler.",
+      "beslenme_onerileri": [
+        {
+          "isim": "Çiğ Badem ve Kuru Üzüm Karışımı",
+          "kart_kisa_aciklama": "Sağlıklı yağlar ve doğal şekerle anında kafeinsiz canlan.",
+          "bilimsel_fayda_detay": "Badem hücrelerin enerji santrallerini desteklerken kuru üzüm hızlı yakıt sağlar.",
+          "tuketim_onerisi": "Küçük bir avuç çiğ badem ve kuru üzümü kahve olmadan doğrudan ye.",
+          "gorsel_url": "https://images.unsplash.com/photo-1508061263366-c7bb3cc270bb",
+          "icerik_etiketleri": ["Kuruyemiş", "Üzüm"],
+          "riskli_hastaliklar": ["Diyabet"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Beyaz Peynirli Tam Buğday Tost",
+          "kart_kisa_aciklama": "Ağır yemeklerin ağırlığına düşmeden enerjini topla.",
+          "bilimsel_fayda_detay": "Tam tahıllar kompleks karbonhidrattır, anlık değil uzun süreli ve dengeli bir enerji sunar.",
+          "tuketim_onerisi": "1 dilim tam buğday ekmeği arasına peynir koyup tost makinesinde ısıt.",
+          "gorsel_url": "https://images.unsplash.com/photo-1550507992-eb63ffee0224",
+          "icerik_etiketleri": ["Gluten", "Laktoz"],
+          "riskli_hastaliklar": ["Çölyak", "Laktoz İntoleransı"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Taze Yeşil Elma",
+          "kart_kisa_aciklama": "Doğal fruktoz ve lif ile uyku sersemliğini at.",
+          "bilimsel_fayda_detay": "Elmanın asidik ve lifli yapısı, kahveden daha sürdürülebilir bir uyanıklık hissi verir.",
+          "tuketim_onerisi": "Kabuklarıyla birlikte yıkayıp kütür kütür doğrudan ısırarak ye.",
+          "gorsel_url": "https://images.unsplash.com/photo-1567306226416-28f0efdc88ce",
+          "icerik_etiketleri": ["Elma"],
+          "riskli_hastaliklar": [],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Naneli Limonlu Su",
+          "kart_kisa_aciklama": "Vücut hidrasyonunu sağlayarak zihinsel sisi dağıt.",
+          "bilimsel_fayda_detay": "Susuzluk (dehidrasyon) yorgunluğun bir numaralı nedenidir. Su hücreleri uyandırır.",
+          "tuketim_onerisi": "500 ml soğuk suyun içine birkaç damla limon sıkıp 2 dakikada yavaşça bitir.",
+          "gorsel_url": "https://images.unsplash.com/photo-1548964856-ac526a48e8a2",
+          "icerik_etiketleri": ["Limon", "Nane"],
+          "riskli_hastaliklar": ["Mide Ülseri"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Muzlu Soğuk Süt",
+          "kart_kisa_aciklama": "Karbonhidrat ve proteini sıvı formda hızlıca al.",
+          "bilimsel_fayda_detay": "Muz doğal enerji deposudur. Süt ile birleştiğinde kasların ihtiyaç duyduğu yakıtı sağlar.",
+          "tuketim_onerisi": "Muzu çatalla ezip 1 bardak soğuk sütle iyice karıştır ve tek dikişte iç.",
+          "gorsel_url": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e",
+          "icerik_etiketleri": ["Laktoz", "Muz"],
+          "riskli_hastaliklar": ["Laktoz İntoleransı"],
+          "ozel_durum_uyarisi": []
+        }
+      ],
+      "aktivite_onerileri": [
+        {
+          "isim": "Pencere Kenarında Derin Nefes Almak",
+          "kart_kisa_aciklama": "Taze oksijenle beyninin pilini şarj et.",
+          "bilimsel_fayda_detay": "Kapalı ortamdaki karbondioksit birikimi yorgunluğun baş nedenidir. Oksijen, hücresel enerjiyi artırır.",
+          "uygulama_onerisi": "Camı sonuna kadar aç, dışarıya doğru bakarak ciğerlerini tam dolduracak şekilde nefes alıp ver.",
+          "gorsel_url": "https://images.unsplash.com/photo-1532009877282-3340270e0529",
+          "riskli_hastaliklar": ["İleri Derece Solunum Yolu Rahatsızlığı"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Kısa Açık Hava Yürüyüşü",
+          "kart_kisa_aciklama": "Hafif adımlarla bedenin uyku modunu kapat.",
+          "bilimsel_fayda_detay": "Kısa bir yürüyüş kan dolaşımını canlandırarak uyku halini ve halsizliği anında giderir.",
+          "uygulama_onerisi": "Sadece binanın veya evin etrafında 5 dakika dolaşıp geri gel.",
+          "gorsel_url": "https://images.unsplash.com/photo-1551632811-561732d1e306",
+          "riskli_hastaliklar": ["Fiziksel Yürüme Engeli"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Yüzü Soğuk Suyla Yıkamak",
+          "kart_kisa_aciklama": "Fiziksel şok ile sinir sistemini uyanışa geçir.",
+          "bilimsel_fayda_detay": "Soğuk su, kanın iç organlardan yüzeye daha hızlı pompalanmasını sağlayarak anında zindelik verir.",
+          "uygulama_onerisi": "Lavaboya git ve en soğuk suyla yüzünü 4-5 kez art arda yıka.",
+          "gorsel_url": "https://images.unsplash.com/photo-1543910620-799517178875",
+          "riskli_hastaliklar": ["Aşırı Hassas Cilt", "Soğuk Ürtikeri"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Enerjik Bir Müzikle Ritim Tutmak",
+          "kart_kisa_aciklama": "Ritim algısı ile beynini uyanık tut.",
+          "bilimsel_fayda_detay": "Temposu yüksek müzikler dopamin salgılatarak bedene enerji yanılsaması verir.",
+          "uygulama_onerisi": "Seni en çok gaza getiren şarkıyı açıp oturduğun yerde ellerinle ritim tut.",
+          "gorsel_url": "https://images.unsplash.com/photo-1514525253361-b83f859b71c2",
+          "riskli_hastaliklar": [],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Kolları ve Bacakları Sallamak",
+          "kart_kisa_aciklama": "Kaslarındaki uyuşukluğu mekanik olarak at.",
+          "bilimsel_fayda_detay": "Esnemek ve hafif hareket, dokulardaki enerji üretim mekanizmalarını uyarır.",
+          "uygulama_onerisi": "Ayağa kalk, kollarını tavan yönünde uzat, ardından bacaklarını hafifçe salla.",
+          "gorsel_url": "https://images.unsplash.com/photo-1552196564-972b49916d44",
+          "riskli_hastaliklar": ["İleri Derece Eklem Ağrısı"],
+          "ozel_durum_uyarisi": []
+        }
+      ]
+    },
+    {
+      "label_id": 4,
+      "duygu_adi": "Motivasyon Eksikliği",
+      "beslenme_genel_ozet": "Kuruyemiş, süt ürünleri ve proteinler, serotonin üretimini destekleyerek ruh halini iyileştirir.",
+      "aktivite_genel_ozet": "Başlaması çok kolay, ufak adımlı görevler dopamin salınımını artırarak motivasyonu tetikler.",
+      "beslenme_onerileri": [
+        {
+          "isim": "Haşlanmış Yumurta ve Tuzlu Kraker",
+          "kart_kisa_aciklama": "Hızlı protein alımıyla odaklanmayı ve dopamini artır.",
+          "bilimsel_fayda_detay": "Protein, dopamin ve nöroadrenalin üretimini destekleyerek dikkat ve çalışma isteğini artırır.",
+          "tuketim_onerisi": "Hızlıca 1 yumurta haşla, yanına birkaç tuzlu kraker alarak pratik bir şekilde ye.",
+          "gorsel_url": "https://images.unsplash.com/photo-1506084868730-3c2bb9c3e901",
+          "icerik_etiketleri": ["Yumurta", "Gluten"],
+          "riskli_hastaliklar": ["Çölyak"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Tahinli Tam Buğday Ekmeği",
+          "kart_kisa_aciklama": "Doğal şeker ve sağlıklı yağla beynin motorunu çalıştır.",
+          "bilimsel_fayda_detay": "Tahin enerji verirken, tam buğday beynin ihtiyaç duyduğu glikozu uzun süreli sağlar.",
+          "tuketim_onerisi": "1 dilim ekmeğe 1 tatlı kaşığı tahin sürüp hızlıca tüket.",
+          "gorsel_url": "https://images.unsplash.com/photo-1588680325492-b430cdeab502",
+          "icerik_etiketleri": ["Gluten", "Susam"],
+          "riskli_hastaliklar": ["Susam Alerjisi", "Çölyak"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Kakaolu Fındık Ezmeli Muz",
+          "kart_kisa_aciklama": "Hızlı enerji ile başlama direncini tatlı yoldan kır.",
+          "bilimsel_fayda_detay": "Muz triptofan içerir, kakao ise uyanıklık sağlayarak eyleme geçmeye hazır bir zihin sunar.",
+          "tuketim_onerisi": "Muzu ortadan kes, üzerine 1 kaşık fındık ezmesi sürüp tüket.",
+          "gorsel_url": "https://images.unsplash.com/photo-1511381939415-e44015466834",
+          "icerik_etiketleri": ["Fıstık/Fındık", "Kakao", "Muz"],
+          "riskli_hastaliklar": ["Diyabet"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Kavrulmamış Karışık Kuruyemiş",
+          "kart_kisa_aciklama": "Masanı terk etmeden beynini besle.",
+          "bilimsel_fayda_detay": "Kaju ve fındık beynin ihtiyaç duyduğu sağlıklı yağlarla zihinsel üşengeçliği kırar.",
+          "tuketim_onerisi": "Çalışma alanına küçük bir kase kuruyemiş al ve çalışırken atıştır.",
+          "gorsel_url": "https://images.unsplash.com/photo-1599599810769-bcfe5a160c91",
+          "icerik_etiketleri": ["Kuruyemiş"],
+          "riskli_hastaliklar": ["Kuruyemiş Alerjisi"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Sade Ayran",
+          "kart_kisa_aciklama": "Mideyi yormadan ferahla ve gerginliğini azalt.",
+          "bilimsel_fayda_detay": "Süt ürünleri, stres kaynaklı erteleme hastalığını azaltan rahatlatıcı bileşenler içerir.",
+          "tuketim_onerisi": "Hazırlamakla uğraşmadan dolaptan bir bardak soğuk ayran koyup iç.",
+          "gorsel_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150",
+          "icerik_etiketleri": ["Laktoz"],
+          "riskli_hastaliklar": ["Laktoz İntoleransı"],
+          "ozel_durum_uyarisi": []
+        }
+      ],
+      "aktivite_onerileri": [
+        {
+          "isim": "Sadece 3 Eşyayı Yerine Koymak",
+          "kart_kisa_aciklama": "Beynini kandırarak en zor kısım olan 'başlamayı' aş.",
+          "bilimsel_fayda_detay": "Davranış başlatıcı mikro eylemler, motivasyon eksikliğini eyleme geçerek çözer.",
+          "uygulama_onerisi": "Odanı veya masanı toplamak yerine sadece gözüne çarpan 3 eşyayı yerine koy ve bırak.",
+          "gorsel_url": "https://images.unsplash.com/photo-1581578731522-7b6349d28c2f",
+          "riskli_hastaliklar": [],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Hedefleri 3 Adıma Bölmek",
+          "kart_kisa_aciklama": "Büyük resmi parçalayarak göz korkutan detaylardan kurtul.",
+          "bilimsel_fayda_detay": "Uzun listeler beyni yorar, kısa ve bitirilebilir listeler 'yapabilirim' hissini geri getirir.",
+          "uygulama_onerisi": "Bir kağıda, şu anki işini tamamlamak için gereken ilk 3 basit adımı yaz.",
+          "gorsel_url": "https://images.unsplash.com/photo-1517842645767-c639042777db",
+          "riskli_hastaliklar": [],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "İlham Verici Kısa Bir Video İzlemek",
+          "kart_kisa_aciklama": "Başkalarının enerjisini kopyalayarak ateşlen.",
+          "bilimsel_fayda_detay": "Ayna nöronlar sayesinde motive edici içerikler beyni harekete geçmeye hazır hale getirir.",
+          "uygulama_onerisi": "Seni gaza getiren bir TEDx konuşmasını veya başarılı birinin hikayesini açıp izle.",
+          "gorsel_url": "https://images.unsplash.com/photo-1478147427282-58a87a120781",
+          "riskli_hastaliklar": [],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Olduğun Yerde 2 Dakika Zıplamak",
+          "kart_kisa_aciklama": "Nabzı hafifçe yükselterek bedeni uyuşukluktan çıkar.",
+          "bilimsel_fayda_detay": "Fiziksel durgunluk zihinsel ertelemeyi besler; hafif sıçramalar dopamini uyarır.",
+          "uygulama_onerisi": "Ayağa kalk, olduğun yerde bacaklarını karnına çekerek veya çok hafif zıplayarak 2 dakika geçir.",
+          "gorsel_url": "https://images.unsplash.com/photo-1518611012118-29a8d63a8368",
+          "riskli_hastaliklar": ["Eklem Hastalıkları", "İleri Bel/Boyun Fıtığı"],
+          "ozel_durum_uyarisi": ["Hamilelik"]
+        },
+        {
+          "isim": "Ekransız 10 Sayfa Kitap Okumak",
+          "kart_kisa_aciklama": "Odaklanma kaslarını teknoloji olmadan ısıt.",
+          "bilimsel_fayda_detay": "Okumak, dağılmış dikkat süresini tek bir noktada toplayarak zihni asıl görevine hazırlar.",
+          "uygulama_onerisi": "Telefonunu uçak moduna alıp herhangi bir kurgu kitabın 10 sayfasını oku.",
+          "gorsel_url": "https://images.unsplash.com/photo-1495446815901-a7297e633e8d",
+          "riskli_hastaliklar": ["Göz Yorgunluğu"],
+          "ozel_durum_uyarisi": []
+        }
+      ]
+    },
+    {
+      "label_id": 5,
+      "duygu_adi": "Depresif / Hüzünlü",
+      "beslenme_genel_ozet": "Balık, ceviz ve yeşillikler içerdikleri omega-3 ve folik asit ile nörotransmitter sentezini artırır, beyin fonksiyonlarını destekler.",
+      "aktivite_genel_ozet": "Doğa yürüyüşü ve hafif aktiviteler, serotonin ile endorfin artışı sağlayarak içe kapanma eğilimini kırar.",
+      "beslenme_onerileri": [
+        {
+          "isim": "Pratik Ton Balıklı Sandviç",
+          "kart_kisa_aciklama": "Omega-3 ile hücresel düzeyde çökkünlükle savaş.",
+          "bilimsel_fayda_detay": "Omega-3 yağ asitleri beyin iltihabını azaltarak duygu durumunu iyileştirir.",
+          "tuketim_onerisi": "2 dilim ekmeğin arasına süzülmüş ton balığı ve biraz yeşillik koyup hızlıca tüket.",
+          "gorsel_url": "https://images.unsplash.com/photo-1467003909585-2f8a72700288",
+          "icerik_etiketleri": ["Gluten", "Balık/Deniz Ürünü"],
+          "riskli_hastaliklar": ["Balık Alerjisi", "Çölyak"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Limonlu Roka ve Ispanak Salatası",
+          "kart_kisa_aciklama": "Folik asit ile beyninin mutluluk üretim fabrikasını çalıştır.",
+          "bilimsel_fayda_detay": "Yeşil yapraklı sebzelerdeki folat, serotonin üretimi için kritik öneme sahiptir.",
+          "tuketim_onerisi": "Dolaptaki taze yeşillikleri doğra, bol limon ve az zeytinyağı ile ferahlatıcı bir öğün yap.",
+          "gorsel_url": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd",
+          "icerik_etiketleri": ["Yeşillik", "Limon"],
+          "riskli_hastaliklar": [],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Avokadolu Kızarmış Ekmek",
+          "kart_kisa_aciklama": "Sağlıklı yağlarla zihinsel ağırlığı ve hüznü hafiflet.",
+          "bilimsel_fayda_detay": "Avokado beyin kan akışını iyileştirerek zihinsel sisi ve çökkünlüğü dağıtır.",
+          "tuketim_onerisi": "Çeyrek avokadoyu çatalla ezip kızarmış bir ekmek dilimine sür, üzerine karabiber ekle.",
+          "gorsel_url": "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578",
+          "icerik_etiketleri": ["Gluten", "Avokado"],
+          "riskli_hastaliklar": ["Çölyak"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Bir Avuç Tam Ceviz",
+          "kart_kisa_aciklama": "Hazırlık gerektirmeyen en güçlü beyin onarıcı atıştırmalık.",
+          "bilimsel_fayda_detay": "Antioksidan kapasitesi en yüksek yemiş olarak beynin stresle başa çıkmasına yardım eder.",
+          "tuketim_onerisi": "Yataktan çıkmakta veya bir şey hazırlamakta zorlanıyorsan sadece 3-4 ceviz ye.",
+          "gorsel_url": "https://images.unsplash.com/photo-1585129049162-71fa2b20455f",
+          "icerik_etiketleri": ["Kuruyemiş"],
+          "riskli_hastaliklar": ["Kuruyemiş Alerjisi"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Peynirli Pratik Omlet",
+          "kart_kisa_aciklama": "D vitamini ve B12 ile ruh halini hızlıca toparla.",
+          "bilimsel_fayda_detay": "Yumurta sarısındaki vitaminler antidepresan etkisi göstererek nörotransmitter sentezini destekler.",
+          "tuketim_onerisi": "2 yumurtayı çırpıp 5 dakikada sıcak bir omlet yap, içine biraz peynir ekle.",
+          "gorsel_url": "https://images.unsplash.com/photo-1506084868730-3c2bb9c3e901",
+          "icerik_etiketleri": ["Yumurta", "Laktoz"],
+          "riskli_hastaliklar": ["Yumurta Alerjisi"],
+          "ozel_durum_uyarisi": []
+        }
+      ],
+      "aktivite_onerileri": [
+        {
+          "isim": "Güneşli Bir Açık Havada Yavaş Yürüyüş",
+          "kart_kisa_aciklama": "D vitamini ve temiz hava ile modunu doğal yoldan yükselt.",
+          "bilimsel_fayda_detay": "Doğal gün ışığı sirkadiyen ritmi düzeltir ve açık hava yürüyüşü içe kapanmayı önler.",
+          "uygulama_onerisi": "Kulaklığını bile almadan dışarı çık, güneş ışığını yüzünde hissederek 15 dakika yavaşça yürü.",
+          "gorsel_url": "https://images.unsplash.com/photo-1510784722466-f2aa9c52fff6",
+          "riskli_hastaliklar": ["Güneş Alerjisi", "Fiziksel Yürüme Engeli"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Eski Bir Hobiyi Sadece 10 Dakika Yapmak",
+          "kart_kisa_aciklama": "Zihnini geçmişteki başarı hisleriyle besle.",
+          "bilimsel_fayda_detay": "Önceden keyif veren eylemlere küçük dönüşler yapmak, beyinde o dönemin mutluluk bağlarını uyarır.",
+          "uygulama_onerisi": "Eskiden çaldığın bir enstrümanı eline al veya eski çizim defterini açıp 10 dakika ilgilen.",
+          "gorsel_url": "https://images.unsplash.com/photo-1556910103-1c02745aae4d",
+          "riskli_hastaliklar": [],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Eski Mutlu Fotoğraflara Göz Atmak",
+          "kart_kisa_aciklama": "Görsel anılarla pozitif duygularınızı geri çağırın.",
+          "bilimsel_fayda_detay": "Güzel anıları hatırlamak, beynin o anki mutluluk kimyasallarını yeniden salgılamasını sağlar.",
+          "uygulama_onerisi": "Telefon galerinizdeki veya albümdeki en mutlu olduğunuz tatil fotoğraflarına göz atın.",
+          "gorsel_url": "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846",
+          "riskli_hastaliklar": [],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Komedi Dizisinden Kısa Kesitler İzlemek",
+          "kart_kisa_aciklama": "Yüz kaslarını gülümsemeye zorlayarak beyni kandır.",
+          "bilimsel_fayda_detay": "Gülümsemek, yapay bile olsa beyne endorfin salgılaması için komut gönderir.",
+          "uygulama_onerisi": "YouTube'dan sevdiğin eğlenceli bir filmin veya dizinin komik sahnelerini izle.",
+          "gorsel_url": "https://images.unsplash.com/photo-1524985069026-dd778a71c7b4",
+          "riskli_hastaliklar": ["Migren (Ekrana Bakmak Tetikliyorsa)"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Kendini Şımartan Pratik Bir Atıştırmalık Hazırlamak",
+          "kart_kisa_aciklama": "Üretim eylemi ile kendine değer verdiğini kanıtla.",
+          "bilimsel_fayda_detay": "Bir eylemi başlatıp bitirmek beyne küçük bir zafer ve tatmin mesajı verir.",
+          "uygulama_onerisi": "Sadece kendin için, en sevdiğin bardakta güzel bir kahve veya şık bir sandviç hazırla.",
+          "gorsel_url": "https://images.unsplash.com/photo-1556910103-1c02745aae4d",
+          "riskli_hastaliklar": [],
+          "ozel_durum_uyarisi": []
+        }
+      ]
+    },
+    {
+      "label_id": 6,
+      "duygu_adi": "Uyku / Huzursuzluk",
+      "beslenme_genel_ozet": "Süt, badem ve vişne suyu gibi gıdalar triptofan içererek melatonin ve serotonin üretimini destekler.",
+      "aktivite_genel_ozet": "Bedeni ve gözleri yavaşlatan hazırlık ritüelleri, sirkadiyen ritmi düzenler ve uyku kalitesini artırır.",
+      "beslenme_onerileri": [
+        {
+          "isim": "Ballı Ilık Süt",
+          "kart_kisa_aciklama": "Geleneksel ve etkili yöntemle beynine uyku sinyali gönder.",
+          "bilimsel_fayda_detay": "Triptofan beyinde melatonin (uyku hormonu) ve serotonine dönüşür.",
+          "tuketim_onerisi": "Yatağa gitmeden 30 dakika önce 1 çay bardağı sütü ısıtıp az balla tatlandırarak iç.",
+          "gorsel_url": "https://images.unsplash.com/photo-1550583724-b2692b85b150",
+          "icerik_etiketleri": ["Laktoz", "Bal"],
+          "riskli_hastaliklar": ["Laktoz İntoleransı"],
+          "ozel_durum_uyarisi": ["Bebeklerde 1 Yaş Öncesi Bal Yasak"]
+        },
+        {
+          "isim": "Sade Çiğ Badem",
+          "kart_kisa_aciklama": "Kan şekerini stabilize ederek gece deliksiz uyu.",
+          "bilimsel_fayda_detay": "İçerdiği magnezyum ile kan şekerinin gece düşmesini ve buna bağlı uyanmaları durdurur.",
+          "tuketim_onerisi": "Akşam televizyon izlerken veya yatmadan önce 5-6 adet çiğ badem atıştır.",
+          "gorsel_url": "https://images.unsplash.com/photo-1508061263366-c7bb3cc270bb",
+          "icerik_etiketleri": ["Kuruyemiş"],
+          "riskli_hastaliklar": ["Kuruyemiş Alerjisi"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Şekersiz Vişne Suyu",
+          "kart_kisa_aciklama": "Doğal melatonin bombasıyla sirkadiyen ritmini onar.",
+          "bilimsel_fayda_detay": "Vişne doğadaki nadir direkt melatonin kaynaklarından biridir, uyku kalitesini artırır.",
+          "tuketim_onerisi": "Uykudan bir saat önce 1 çay bardağı katkısız vişne suyu iç.",
+          "gorsel_url": "https://images.unsplash.com/photo-1596755490074-124b1793b821",
+          "icerik_etiketleri": ["Vişne"],
+          "riskli_hastaliklar": ["Mide Ülseri"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Melisa veya Papatya Çayı",
+          "kart_kisa_aciklama": "Bitkilerin yatıştırıcı gücüyle beyni dinlenmeye programla.",
+          "bilimsel_fayda_detay": "Sinirleri yatıştırır ve bedeni kimyasal olarak gevşeterek uykuya dalma süresini kısaltır.",
+          "tuketim_onerisi": "Yatmadan 45 dakika önce şekersiz bir fincan demleyip ılıkken tüket.",
+          "gorsel_url": "https://images.unsplash.com/photo-1596547609652-9cb5b4d45d5a",
+          "icerik_etiketleri": ["Papatya", "Melisa"],
+          "riskli_hastaliklar": ["Bitki Çayı Alerjisi"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Küçük Bir Muz",
+          "kart_kisa_aciklama": "Magnezyum ve potasyum ile gece boyu kas spazmlarını engelle.",
+          "bilimsel_fayda_detay": "Kasları gevşetir, fiziksel huzursuzluk nedeniyle yatakta dönmeleri önler.",
+          "tuketim_onerisi": "Çok açsan uyumadan 1 saat önce küçük bir yerli muz tüket.",
+          "gorsel_url": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e",
+          "icerik_etiketleri": ["Muz"],
+          "riskli_hastaliklar": ["Diyabet"],
+          "ozel_durum_uyarisi": []
+        }
+      ],
+      "aktivite_onerileri": [
+        {
+          "isim": "Odayı İyice Havalandırıp Serinletmek",
+          "kart_kisa_aciklama": "Vücut ısınızı düşürerek uykuya dalmayı hızlandırın.",
+          "bilimsel_fayda_detay": "Vücut çekirdek ısısının düşmesi biyolojik olarak beynin uyku evresine girdiğinin kanıtıdır.",
+          "uygulama_onerisi": "Uyumadan önce pencereleri açıp odayı serinlet, sonra sıcak yorganın altına gir.",
+          "gorsel_url": "https://images.unsplash.com/photo-1532009877282-3340270e0529",
+          "riskli_hastaliklar": ["İleri Derece Soğuk Algınlığı"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Yatak İçinde Sırt ve Boyun Esnemesi",
+          "kart_kisa_aciklama": "Gün boyu kaslarda biriken gerginliği mekanik olarak at.",
+          "bilimsel_fayda_detay": "Akşam yapılan hafif esnemeler kas gevşemesini sağlayarak uykuya geçişi kolaylaştırır.",
+          "uygulama_onerisi": "Yatağa uzan, dizlerini göğsüne çekip sarıl ve boynunu yastıkta sağa sola çevir.",
+          "gorsel_url": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b",
+          "riskli_hastaliklar": ["Boyun Fıtığı", "Bel Fıtığı"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Telefonu Odanın Dışında Bırakmak",
+          "kart_kisa_aciklama": "Mavi ış maruziyetini keserek melatonini serbest bırak.",
+          "bilimsel_fayda_detay": "Ekranlardan gelen mavi ışık beyni gündüz olduğuna inandırarak uyku hormonunu bloke eder.",
+          "uygulama_onerisi": "Alarmı kurduktan sonra telefonu yatağından uzanıp alamayacağın bir yere koy.",
+          "gorsel_url": "https://images.unsplash.com/photo-1512314889357-e157c22f938d",
+          "riskli_hastaliklar": [],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Başucunda Kurgusal Bir Kitap Okumak",
+          "kart_kisa_aciklama": "Kendi dertlerini bırakıp başka bir hikayede gözlerini yor.",
+          "bilimsel_fayda_detay": "Hafif okumalar göz kaslarını yorar ve beyin dalgalarını yavaşlatır.",
+          "uygulama_onerisi": "Seni düşünmeye sevk edecek kitaplar değil, bir romanı gözlerin kapanana kadar oku.",
+          "gorsel_url": "https://images.unsplash.com/photo-1495446815901-a7297e633e8d",
+          "riskli_hastaliklar": ["Göz Rahatsızlıkları"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Uyku Meditasyonu veya Yağmur Sesi Dinlemek",
+          "kart_kisa_aciklama": "Zihnin arka plandaki gürültüsünü yönlendirilmiş sesle sustur.",
+          "bilimsel_fayda_detay": "Frekansı düşük dinlendirici sesler beyin dalgalarını Alfa frekansına çeker.",
+          "uygulama_onerisi": "Gözlerini kapatıp telefondan düşük sesle yağmur veya okyanus sesi aç.",
+          "gorsel_url": "https://images.unsplash.com/photo-1514525253361-b83f859b71c2",
+          "riskli_hastaliklar": [],
+          "ozel_durum_uyarisi": []
+        }
+      ]
+    },
+    {
+      "label_id": 7,
+      "duygu_adi": "Odak Eksikliği",
+      "beslenme_genel_ozet": "Tam tahıllar, fındık ve kahve beyin enerji dengesini sağlar, kompleks karbonhidratlarla bilişsel performansı artırır.",
+      "aktivite_genel_ozet": "Gözleri dinlendiren ve beyin kan akışını artıran kısa molalar, dikkat süresini yeniler.",
+      "beslenme_onerileri": [
+        {
+          "isim": "Çiğ Fındık",
+          "kart_kisa_aciklama": "Omega-3 ile kopan dikkat tellerini birbirine bağla.",
+          "bilimsel_fayda_detay": "Fındık, beynin elektriksel iletişimini sağlayan sağlıklı yağlar içerir.",
+          "tuketim_onerisi": "Bilgisayar başında çalışırken yanına küçük bir avuç fındık alıp çiğneyerek tüket.",
+          "gorsel_url": "https://images.unsplash.com/photo-1585129049162-71fa2b20455f",
+          "icerik_etiketleri": ["Kuruyemiş", "Fındık"],
+          "riskli_hastaliklar": ["Kuruyemiş Alerjisi"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Şekersiz Sade Filtre Kahve",
+          "kart_kisa_aciklama": "Merkezi sinir sistemine hızlı bir kafein uyarısı gönder.",
+          "bilimsel_fayda_detay": "Kafein adenozin reseptörlerini geçici olarak kapatarak uyanıklık ve keskin bir dikkat sağlar.",
+          "tuketim_onerisi": "Sıcak bir filtre kahve demle ve çalışırken odak dağıldıkça yudumla.",
+          "gorsel_url": "https://images.unsplash.com/photo-1509042239860-f550ce710b93",
+          "icerik_etiketleri": ["Kafein"],
+          "riskli_hastaliklar": ["Tansiyon", "Kalp Rahatsızlığı"],
+          "ozel_durum_uyarisi": ["Hamilelikte Sınırlı Tüketim"]
+        },
+        {
+          "isim": "Yoğurtlu Yaban Mersini",
+          "kart_kisa_aciklama": "Beyin hücreleri arasındaki sinyalleri hızlandır.",
+          "bilimsel_fayda_detay": "Yaban mersinindeki flavonoidler kısa süreli hafızayı ve konsantrasyonu güçlendirir.",
+          "tuketim_onerisi": "Küçük bir kase yoğurda bir avuç yaban mersini (taze veya kuru) atıp tüket.",
+          "gorsel_url": "https://images.unsplash.com/photo-1498557850523-fd3d118b962e",
+          "icerik_etiketleri": ["Laktoz", "Yaban Mersini"],
+          "riskli_hastaliklar": ["Laktoz İntoleransı"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Sade Tam Buğday Kraker",
+          "kart_kisa_aciklama": "Ani şeker düşmelerinin neden olduğu zihinsel uyuşukluğu önle.",
+          "bilimsel_fayda_detay": "Kompleks karbonhidratlar beyni yormadan damla damla enerji vererek odağı korur.",
+          "tuketim_onerisi": "Odaklanman gereken işin ortasında açlık hissini bastırmak için 2-3 adet ye.",
+          "gorsel_url": "https://images.unsplash.com/photo-1517673132405-a56a62b18caf",
+          "icerik_etiketleri": ["Gluten"],
+          "riskli_hastaliklar": ["Çölyak"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Bitter Çikolatalı Pirinç Patlağı",
+          "kart_kisa_aciklama": "Hafif ve çıtır atıştırmalıkla uykunu aç.",
+          "bilimsel_fayda_detay": "Pirinç patlağı mideyi yormaz, üzerindeki çikolata ise odaklanmayı destekler.",
+          "tuketim_onerisi": "Üzerine eritilmiş bitter çikolata gezdirilmiş 1 adet pirinç patlağını ye.",
+          "gorsel_url": "https://images.unsplash.com/photo-1511381939415-e44015466834",
+          "icerik_etiketleri": ["Kakao", "Pirinç"],
+          "riskli_hastaliklar": ["Diyabet"],
+          "ozel_durum_uyarisi": []
+        }
+      ],
+      "aktivite_onerileri": [
+        {
+          "isim": "25 Dakika Çalış / 5 Dakika Mola (Pomodoro)",
+          "kart_kisa_aciklama": "Beynin odaklanma süresini biyolojik sınırlarına uygun kullan.",
+          "bilimsel_fayda_detay": "İnsan beyni aralıksız uzun süre odaklanamaz, kısa molalar bilişsel tükenmeyi önler.",
+          "uygulama_onerisi": "Telefonu sessize al, zamanlayıcıyı 25 dakikaya kur ve bitene kadar başını kaldırma.",
+          "gorsel_url": "https://images.unsplash.com/photo-1507925922837-326f1c4df97b",
+          "riskli_hastaliklar": [],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Sandalyede Sırt Esnetme",
+          "kart_kisa_aciklama": "Kan akışını beyne doğru yeniden yönlendirin.",
+          "bilimsel_fayda_detay": "Hareketsizlik nedeniyle sırtta göllenen kanı hareket ettirmek beyne oksijen gitmesini sağlar.",
+          "uygulama_onerisi": "Sandalyeden hiç kalkmadan sırtını dikleştir, kollarını havaya kaldırarak iyice gerdir.",
+          "gorsel_url": "https://images.unsplash.com/photo-1552196564-972b49916d44",
+          "riskli_hastaliklar": ["İleri Derece Omurga Hastalıkları"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "20-20-20 Göz Dinlendirme Kuralı",
+          "kart_kisa_aciklama": "Ekrandan yorulan göz sinirlerini gevşet.",
+          "bilimsel_fayda_detay": "Göz yorgunluğu direkt olarak baş ağrısı ve odak kaybına (zihinsel sise) yol açar.",
+          "uygulama_onerisi": "Her 20 dakikada bir, 20 fit (yaklaşık 6 metre) uzağa 20 saniye boyunca gözlerini kırparak bak.",
+          "gorsel_url": "https://images.unsplash.com/photo-1506126613408-eca07ce68773",
+          "riskli_hastaliklar": [],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Kısa Bir Zeka Oyunu (Sudoku vb.)",
+          "kart_kisa_aciklama": "Beyni farklı bir kanala geçirip yorulan bölgeyi dinlendir.",
+          "bilimsel_fayda_detay": "Kısa bir mantık bulmacası, asıl göreve dönerken zihinsel tazelik sağlar.",
+          "uygulama_onerisi": "5 dakikalık molanda sosyal medyaya bakmak yerine bir Sudoku veya kelime oyunu aç.",
+          "gorsel_url": "https://images.unsplash.com/photo-1534158914592-062992fbe900",
+          "riskli_hastaliklar": ["Migren (Ekrana Bakmak Tetikliyorsa)"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Gözleri 5 Dakika Kapatmak",
+          "kart_kisa_aciklama": "Görsel bombardımanı durdurarak veri akışını kes.",
+          "bilimsel_fayda_detay": "Görsel uyaranların kesilmesi, beynin bilgileri işlemesine ve hafızayı temizlemesine olanak tanır.",
+          "uygulama_onerisi": "Arkana yaslan, gözlerini kapat ve 5 dakika boyunca hiçbir şey yapmadan sadece dur.",
+          "gorsel_url": "https://images.unsplash.com/photo-1513364776144-60967b0f800f",
+          "riskli_hastaliklar": [],
+          "ozel_durum_uyarisi": []
+        }
+      ]
+    },
+    {
+      "label_id": 8,
+      "duygu_adi": "Heyecan / Yüksek Enerji",
+      "beslenme_genel_ozet": "Hafif besinler ve doğal şekerler, hızlanan metabolizmayı dengeleyerek aşırı uyarılmayı kontrol altında tutar.",
+      "aktivite_genel_ozet": "Hareketli müzikler ve tempolu ancak bedeni tüketmeyen aktiviteler, fazla enerjiyi dengeleyip harcar.",
+      "beslenme_onerileri": [
+        {
+          "isim": "Meyveli Chia Pudingi",
+          "kart_kisa_aciklama": "Seni daha da zıplatmadan mevcut yüksek enerjini doyur.",
+          "bilimsel_fayda_detay": "Lif ve protein içeriği enerjinin tatlı krizine dönüşmeden bedende stabil kalmasını sağlar.",
+          "tuketim_onerisi": "Süzme yoğurda chia tohumu ve meyve ekleyerek hafif ve doyurucu bir tatlı yap.",
+          "gorsel_url": "https://images.unsplash.com/photo-1488477181946-6428a0291777",
+          "icerik_etiketleri": ["Laktoz", "Meyve", "Chia Tohumu"],
+          "riskli_hastaliklar": ["Laktoz İntoleransı"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Kinoa veya Bol Yeşillikli Salata",
+          "kart_kisa_aciklama": "Sindirimi yormayan hafif ama doyurucu bir öğün yap.",
+          "bilimsel_fayda_detay": "Mideyi ağırlaştırmadan bedenin fazla enerjiyi işlemesini ve bulantıyı engellemesini sağlar.",
+          "tuketim_onerisi": "Eğer ana öğün vaktinse ağır yemekler yerine bol yeşillikli hafif bir salata tüket.",
+          "gorsel_url": "https://images.unsplash.com/photo-1590333746438-2b134e62e49e",
+          "icerik_etiketleri": ["Kinoa", "Yeşillik"],
+          "riskli_hastaliklar": [],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Buzlu Limonlu Maden Suyu",
+          "kart_kisa_aciklama": "Heyecan anında artan vücut ısısını ve metabolizmanı ferahlat.",
+          "bilimsel_fayda_detay": "Hızlanan metabolizmanın harcadığı mineralleri sıvı olarak hızla yerine koyar.",
+          "tuketim_onerisi": "Maden suyuna bol buz ve birkaç damla limon sıkarak çok soğuk tüket.",
+          "gorsel_url": "https://images.unsplash.com/photo-1513364776144-60967b0f800f",
+          "icerik_etiketleri": ["Limon", "Mineralli Su"],
+          "riskli_hastaliklar": ["Mide Ülseri"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Sade Kefir",
+          "kart_kisa_aciklama": "Midedeki 'kelebekleri' sakinleştir.",
+          "bilimsel_fayda_detay": "Heyecandan artan mide asidini nötralize eder, içsel telaşı bastırır.",
+          "tuketim_onerisi": "Dolaptan soğuk bir bardak kefir alıp içerek mideni rahatlat.",
+          "gorsel_url": "https://images.unsplash.com/photo-1517055729443-34e85741f0eb",
+          "icerik_etiketleri": ["Laktoz"],
+          "riskli_hastaliklar": ["Laktoz İntoleransı"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Kuru Meyveli Küçük Yulaf Lapası",
+          "kart_kisa_aciklama": "Aşırı enerjiyi kontrollü bir yanmaya dönüştür.",
+          "bilimsel_fayda_detay": "Yüksek lifli yapı, hızlanan kan şekeri dalgalanmalarını düz bir çizgiye oturtur.",
+          "tuketim_onerisi": "Biraz sütle yulafı pişir, içine kuru üzüm katarak tatlı niyetine ye.",
+          "gorsel_url": "https://images.unsplash.com/photo-1586439702132-707d37435390",
+          "icerik_etiketleri": ["Gluten", "Laktoz", "Kuru Meyve"],
+          "riskli_hastaliklar": ["Çölyak", "Laktoz İntoleransı"],
+          "ozel_durum_uyarisi": []
+        }
+      ],
+      "aktivite_onerileri": [
+        {
+          "isim": "Hızlı Tempoda Müzikli Yürüyüş",
+          "kart_kisa_aciklama": "Fazla enerjiyi açık havada ve kontrollü bir tempoda yak.",
+          "bilimsel_fayda_detay": "Kalp ritmini hızlandıran tempolu yürüyüş, bedendeki enerji fazlasını yapıcı bir yolla harcar.",
+          "uygulama_onerisi": "Kulaklığını tak ve sadece 15 dakikalığına tempolu yürüyerek enerjini dengele.",
+          "gorsel_url": "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8",
+          "riskli_hastaliklar": ["İleri Derece Eklem Rahatsızlığı", "Şiddetli Kalp Rahatsızlığı"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Hareketli Şarkıya Serbest Dans",
+          "kart_kisa_aciklama": "Aşırı neşe ve heyecanı ritimle dışa vur.",
+          "bilimsel_fayda_detay": "Kardiyovasküler sistemi çalıştırarak enerjiyi yaratıcı ve özgür bir yoldan harcar.",
+          "uygulama_onerisi": "Odanın kapısını kapat, sevdiğin bir şarkıyı aç ve tamamen serbestçe hareket et.",
+          "gorsel_url": "https://images.unsplash.com/photo-1524594152303-9fd13543fe6e",
+          "riskli_hastaliklar": ["Bel/Boyun Fıtığı"],
+          "ozel_durum_uyarisi": ["Hamileliğin Son Ayları"]
+        },
+        {
+          "isim": "Ateş Nefesi (Hızlı Tempolu Nefes Egzersizi)",
+          "kart_kisa_aciklama": "İçindeki hızlı döngüyü nefesine uydurarak bedeni yor.",
+          "bilimsel_fayda_detay": "Bilişsel taşkınlık durumlarında kontrollü ve hızlı nefes alışverişleri zihni bedene sabitler.",
+          "uygulama_onerisi": "Oturarak burnundan saniyede bir kez olacak şekilde hızlı ve ritmik nefes alıp ver.",
+          "gorsel_url": "https://images.unsplash.com/photo-1506126613408-eca07ce68773",
+          "riskli_hastaliklar": ["Tansiyon Hastalığı", "Panik Atak", "Astım"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Masada Ritim Tutmak",
+          "kart_kisa_aciklama": "Beden koordinasyonuyla içsel ritmini düzenle.",
+          "bilimsel_fayda_detay": "Ritim tutmak, beynin motor korteksini oyalayarak anlamsız yerinde duramama halini giderir.",
+          "uygulama_onerisi": "Ellerinle veya ayaklarınla çalan bir şarkının bateri ritimlerine eşlik etmeye çalış.",
+          "gorsel_url": "https://images.unsplash.com/photo-1514525253361-b83f859b71c2",
+          "riskli_hastaliklar": [],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Ayakta Kollarla Esneme",
+          "kart_kisa_aciklama": "Bedenin devir hızını düşürerek kontrollü duruşa geç.",
+          "bilimsel_fayda_detay": "Aktif esneme bedenin hiperaktif modundan çıkıp dinlenme durumuna geçişini kolaylaştırır.",
+          "uygulama_onerisi": "Ayakta kollarını gererek çok yavaş tempoda nefes eşliğinde esne.",
+          "gorsel_url": "https://images.unsplash.com/photo-1552196564-972b49916d44",
+          "riskli_hastaliklar": ["Omuz Çıkığı Geçmişi"],
+          "ozel_durum_uyarisi": []
+        }
+      ]
+    },
+    {
+      "label_id": 9,
+      "duygu_adi": "Mutluluk",
+      "beslenme_genel_ozet": "Antioksidan zengini meyveler ve sağlıklı yağlar, oksidatif stresi azaltarak genel fiziksel dengeyi ve ruh halini korur.",
+      "aktivite_genel_ozet": "Açık hava yürüyüşleri ve keyifli anılar, zihni canlı tutarak mutlu anın tadını çıkarmanı ve psikolojik dengeyi sağlar.",
+      "beslenme_onerileri": [
+        {
+          "isim": "Çilekli Süzme Yoğurt",
+          "kart_kisa_aciklama": "Tatlı bir şeyler yiyerek antioksidan deponu doldur.",
+          "bilimsel_fayda_detay": "Çilekteki antioksidanlar ve yoğurt bedendeki olumlu enerjiyi korur.",
+          "tuketim_onerisi": "1 kase süzme yoğurdun içine 3-4 çilek doğra ve keyifle atıştır.",
+          "gorsel_url": "https://images.unsplash.com/photo-1464965911861-746a04b4bca6",
+          "icerik_etiketleri": ["Laktoz", "Çilek"],
+          "riskli_hastaliklar": ["Laktoz İntoleransı"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Zeytinyağlı Hafif Salata",
+          "kart_kisa_aciklama": "Dengeli bir öğünle bedeni yormadan zinde kal.",
+          "bilimsel_fayda_detay": "Zeytinyağı polifenolleri sinir sisteminin yaşlanmasını geciktirir, ruh halini korur.",
+          "tuketim_onerisi": "Ağır kızartmalar yerine zeytinyağlı taze sebzeler ve yeşillikler tercih et.",
+          "gorsel_url": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd",
+          "icerik_etiketleri": ["Yeşillik", "Zeytinyağı"],
+          "riskli_hastaliklar": [],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Taze Karışık Meyve Suyu",
+          "kart_kisa_aciklama": "Kutlama niyetine vitamin dolu bir bardak iç.",
+          "bilimsel_fayda_detay": "Hücresel canlılığı ve yüzdeki parlaklığı sağlayan vitamin kombinasyonları içerir.",
+          "tuketim_onerisi": "Portakal, elma ve havuç sıkarak kendine ev yapımı bir enerji içeceği yap.",
+          "gorsel_url": "https://images.unsplash.com/photo-1600271886742-f049cd451bba",
+          "icerik_etiketleri": ["Meyve", "Portakal"],
+          "riskli_hastaliklar": ["Diyabet"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Çiğ Kaju Fıstığı",
+          "kart_kisa_aciklama": "Mevcut güzel modunu beyninin sağlıklı çalışmasına yatır.",
+          "bilimsel_fayda_detay": "Triptofan içeriğiyle mutluluk hormonunu sabitler ve sağlıklı yağlar sunar.",
+          "tuketim_onerisi": "Bir kahvenin veya çayın yanına 10-15 adet kaju alıp ye.",
+          "gorsel_url": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35",
+          "icerik_etiketleri": ["Kuruyemiş", "Kaju"],
+          "riskli_hastaliklar": ["Kuruyemiş Alerjisi"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Pul Biberli Avokado Dilimleri",
+          "kart_kisa_aciklama": "Kendini şımartırken sağlıklı yağlardan faydalan.",
+          "bilimsel_fayda_detay": "Lezzetli bir ödül yemeği olmakla beraber beynin işleyişine dosttur.",
+          "tuketim_onerisi": "Avokadoyu dilimle, üzerine az limon, tuz ve pul biber dökerek atıştır.",
+          "gorsel_url": "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578",
+          "icerik_etiketleri": ["Avokado"],
+          "riskli_hastaliklar": ["Mide Ülseri (Baharat Nedeniyle)"],
+          "ozel_durum_uyarisi": []
+        }
+      ],
+      "aktivite_onerileri": [
+        {
+          "isim": "Açık Havada Keyif Yürüyüşü",
+          "kart_kisa_aciklama": "Dengeli ruh halinizi açık hava ile kutlayın.",
+          "bilimsel_fayda_detay": "Doğada geçirilen aktif zaman, stresten arınmış zihnin pozitif durumu kalıcı hale getirmesine yardımcı olur.",
+          "uygulama_onerisi": "Eğer hava güzelse dışarı çıkıp vitrinlere veya etrafa bakarak rahatça yürü.",
+          "gorsel_url": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
+          "riskli_hastaliklar": ["Fiziksel Yürüme Engeli"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Günün En Güzel Anını Bir Yere Not Etmek",
+          "kart_kisa_aciklama": "Kendi mutluluğunu somutlaştırarak kalıcı kıl.",
+          "bilimsel_fayda_detay": "Pozitif anıları fiziksel olarak kaydetmek beyindeki ödül merkezini ve şükran duygusunu pekiştirir.",
+          "uygulama_onerisi": "Telefonunun not defterine veya bir kağıda sadece o günkü en mutlu anını yaz.",
+          "gorsel_url": "https://images.unsplash.com/photo-1517842645767-c639042777db",
+          "riskli_hastaliklar": [],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Yeni Kafe / Sokak Keşfetmek",
+          "kart_kisa_aciklama": "Beynine pozitif ve yeni uyaranlar sun.",
+          "bilimsel_fayda_detay": "Rutin dışı güzel deneyimler yeni nöral ağların oluşmasını sağlayarak anı belleğini güçlendirir.",
+          "uygulama_onerisi": "Hep geçtiğin ama hiç oturmadığın o kafeye gidip kendine güzel bir kahve ısmarla.",
+          "gorsel_url": "https://images.unsplash.com/photo-1507034589631-9433cc6bc453",
+          "riskli_hastaliklar": [],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Eğlenceli Dizi İzlemek",
+          "kart_kisa_aciklama": "Gülümsemenizi sürdürerek anın tadını çıkarın.",
+          "bilimsel_fayda_detay": "Bedeni ve zihni zorlamadan güvende hissetmek mutluluk halini korur.",
+          "uygulama_onerisi": "Atıştırmalığını al, koltuğa yerleş ve severek takip ettiğin diziyi aç.",
+          "gorsel_url": "https://images.unsplash.com/photo-1524985069026-dd778a71c7b4",
+          "riskli_hastaliklar": ["Göz Yorgunluğu (İleri Derece)"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Şarkı Söyleyerek Dans Etmek",
+          "kart_kisa_aciklama": "Mutluluğunu müzik ve ritimle kutla.",
+          "bilimsel_fayda_detay": "Müzikli hareketler beyindeki mutluluk nörotransmitterlerini en üst düzeye çıkarır.",
+          "uygulama_onerisi": "Evin içinde tek başınayken en sevdiğin şarkıyı açıp serbestçe eşlik et.",
+          "gorsel_url": "https://images.unsplash.com/photo-1524594152303-9fd13543fe6e",
+          "riskli_hastaliklar": ["Eklem Ağrıları", "İleri Derece Bel/Boyun Fıtığı"],
+          "ozel_durum_uyarisi": []
+        }
+      ]
+    },
+    {
+      "label_id": 10,
+      "duygu_adi": "Nötr / Genel Denge",
+      "beslenme_genel_ozet": "Tüm makro ve mikro besinleri dengeli barındıran öğünler, genel metabolik ve zihinsel dengeyi korur.",
+      "aktivite_genel_ozet": "Genel fiziksel aktivite ve düzenli molalar, hem bedensel hem de psikolojik dengeyi gün boyu sürdürür.",
+      "beslenme_onerileri": [
+        {
+          "isim": "Sebzeli Izgara Tavuk Dürüm",
+          "kart_kisa_aciklama": "Protein ve lif dengesiyle gününe sağlam devam et.",
+          "bilimsel_fayda_detay": "Tam buğdayın karbonhidratı ve tavuğun proteini genel metabolik dengeyi mükemmel seviyede tutar.",
+          "tuketim_onerisi": "Tam buğday lavaş içerisine ızgara tavuk parçaları ve bol yeşillik ekleyerek sar.",
+          "gorsel_url": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d",
+          "icerik_etiketleri": ["Gluten", "Tavuk", "Sebze"],
+          "riskli_hastaliklar": ["Çölyak"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Cevizli Peynirli Makarna",
+          "kart_kisa_aciklama": "Hem doyurucu hem de zihni canlı tutan bir öğün.",
+          "bilimsel_fayda_detay": "Karbonhidrat enerjiyi sabitlerken, peynir ve ceviz beynin günlük yağ/protein ihtiyacını karşılar.",
+          "tuketim_onerisi": "Haşlanmış kepekli makarnanın üzerine beyaz peynir rendeleyip ufalanmış ceviz ekle.",
+          "gorsel_url": "https://images.unsplash.com/photo-1516100882582-969704c09d42",
+          "icerik_etiketleri": ["Gluten", "Laktoz", "Kuruyemiş"],
+          "riskli_hastaliklar": ["Çölyak", "Laktoz İntoleransı"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Meyveli Sütlü Yulaf Kasesi",
+          "kart_kisa_aciklama": "Ara öğününde mideni yormadan tokluk hissi yarat.",
+          "bilimsel_fayda_detay": "Dengeli makro besin dağılımı ile kan şekerinde ani yükseliş ve düşüşleri engeller.",
+          "tuketim_onerisi": "Yulaf, süt ve sevdiğin herhangi bir mevsim meyvesini karıştırarak tüket.",
+          "gorsel_url": "https://images.unsplash.com/photo-1511381939415-e44015466834",
+          "icerik_etiketleri": ["Gluten", "Laktoz", "Meyve"],
+          "riskli_hastaliklar": ["Çölyak", "Laktoz İntoleransı"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Sıcak Sebze Çorbası ve Kızarmış Ekmek",
+          "kart_kisa_aciklama": "Sıvı takviyesiyle bedeni içten dışa dengele.",
+          "bilimsel_fayda_detay": "Sebzelerin sunduğu zengin mikro besinler (vitaminler) zihinsel durgunluğu önler.",
+          "tuketim_onerisi": "Ev yapımı bir kase sebze çorbasının yanında bir dilim kızarmış tam buğday ekmeği ye.",
+          "gorsel_url": "https://images.unsplash.com/photo-1547592180-85f173990554",
+          "icerik_etiketleri": ["Gluten", "Sebze"],
+          "riskli_hastaliklar": ["Çölyak"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Zeytinyağlı Humus ve Havuç Dilimleri",
+          "kart_kisa_aciklama": "Hafif atıştırmalıkla enerjini sabit tut.",
+          "bilimsel_fayda_detay": "Nohuttaki bitkisel protein ve havuçtaki A vitamini vücut direncini olağan seviyesinde korur.",
+          "tuketim_onerisi": "Havuçları ince uzun dilimleyip humusa batırarak sağlıklı bir cips gibi tüket.",
+          "gorsel_url": "https://images.unsplash.com/photo-1541529086526-db283c563270",
+          "icerik_etiketleri": ["Susam", "Nohut", "Havuç"],
+          "riskli_hastaliklar": ["Susam Alerjisi"],
+          "ozel_durum_uyarisi": []
+        }
+      ],
+      "aktivite_onerileri": [
+        {
+          "isim": "Hafif Tempolu Günlük Yürüyüş",
+          "kart_kisa_aciklama": "Hareketliliğini koruyarak bedenini paslanmaktan kurtar.",
+          "bilimsel_fayda_detay": "Düzenli fiziksel efor, gün içindeki rutin kan akışını sağlıklı bir hızda tutar.",
+          "uygulama_onerisi": "Özel bir hazırlık yapmadan markete veya parka 20 dakikalık normal tempoda bir yürüyüş yap.",
+          "gorsel_url": "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8",
+          "riskli_hastaliklar": ["Fiziksel Yürüme Engeli"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Eğlenceli Bir Podcast Dinlemek",
+          "kart_kisa_aciklama": "Zihnini yormadan yeni bilgiler veya hikayelerle besle.",
+          "bilimsel_fayda_detay": "İşitsel öğrenme beyni aktif tutarken görsel yorgunluk yaratmaz, dengeyi destekler.",
+          "uygulama_onerisi": "Uzanırken veya ev içinde dolaşırken ilgini çeken 30 dakikalık bir podcast bölümü aç.",
+          "gorsel_url": "https://images.unsplash.com/photo-1478147427282-58a87a120781",
+          "riskli_hastaliklar": [],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "15 Dakika Genel Ev/Oda Düzenleme",
+          "kart_kisa_aciklama": "Yaşam alanını küçük dokunuşlarla ferahlat.",
+          "bilimsel_fayda_detay": "Ortamı temiz tutmak görsel stresi minimumda tutarak nötr ve huzurlu hali uzatır.",
+          "uygulama_onerisi": "Gözüne batan ufak tefek eşyaları toparla, yatağını düzelt veya bulaşıkları makineye diz.",
+          "gorsel_url": "https://images.unsplash.com/photo-1581578731522-7b6349d28c2f",
+          "riskli_hastaliklar": ["İleri Derece Eklem Rahatsızlığı"],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "Sevdiğin Bir Müzik Eşliğinde Çay Molası",
+          "kart_kisa_aciklama": "Günün koşturmacasına sakin bir durak ekle.",
+          "bilimsel_fayda_detay": "Bilinçli molalar vermek, beynin nötr durumdan stres durumuna kaymasını önler.",
+          "uygulama_onerisi": "Sıcak bir içecek hazırla, arka plana sevdiğin bir müziği koy ve 10 dakika hiçbir şey yapma.",
+          "gorsel_url": "https://images.unsplash.com/photo-1509042239860-f550ce710b93",
+          "riskli_hastaliklar": [],
+          "ozel_durum_uyarisi": []
+        },
+        {
+          "isim": "İlgi Alanına Yönelik Kısa Bir Belgesel İzlemek",
+          "kart_kisa_aciklama": "Kendini çok zorlamadan ufkunu genişlet.",
+          "bilimsel_fayda_detay": "Görsel-işitsel eğitici içerikler zihinsel kapasiteyi aktif ve sağlıklı bir dengede tutar.",
+          "uygulama_onerisi": "Tarih, doğa veya bilim üzerine 20 dakikalık kısa bir YouTube belgeseli açıp izle.",
+          "gorsel_url": "https://images.unsplash.com/photo-1495446815901-a7297e633e8d",
+          "riskli_hastaliklar": ["Göz Yorgunluğu"],
+          "ozel_durum_uyarisi": []
+        }
+      ]
+    }
+  ]
+}
