@@ -60,9 +60,10 @@ Sistem, yapay zekâ tespiti ile kullanıcı girdisi çeliştiğinde "Duygu Harma
 ---
 
 ## 👥 Proje Ekibi
-**Geliştirici:** Zeynep Çiğdem ŞAHİN (24100011816) 
-**Geliştirici:** Okan YÖRÜK (22100011067) 
-**Danışman:** Dr. Öğr. Üyesi Ayşe Merve ACILAR 
+
+**Geliştirici:** [Zeynep Çiğdem ŞAHİN (24100011816)](https://github.com/zcigdemsahin)        
+**Geliştirici:** [Okan YÖRÜK (22100011067)](https://github.com/yorukokan)               
+**Danışman:** [Dr. Öğr. Üyesi Ayşe Merve ACILAR](https://github.com/amacilar)                  
 
 ---
 *Bu çalışma Necmettin Erbakan Üniversitesi Bilgisayar Mühendisliği Uygulama Tasarımı dersi kapsamında geliştirilmektedir.*
