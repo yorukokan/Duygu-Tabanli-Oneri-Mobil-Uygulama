@@ -1,1 +1,10 @@
-wheel==0.46.3
+fastapi              # API framework
+uvicorn              # FastAPI sunucusu
+python-multipart     # fotoğraf/form-data alma
+opencv-python        # görüntü işleme
+numpy                # sayısal işlemler
+pandas               # veri işleme
+torch                # yapay zekâ modeli
+torchvision          # görüntü/model yardımcıları
+Pillow               # görsel okuma/dönüştürme
+psycopg2-binary      # PostgreSQL bağlantısı
