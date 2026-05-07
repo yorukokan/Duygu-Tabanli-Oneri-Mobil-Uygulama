@@ -1,0 +1,12 @@
+# Firebase config files
+Flutter/android/app/google-services.json
+Flutter/ios/Runner/GoogleService-Info.plist
+Flutter/lib/firebase_options.dart
+
+# macOS
+.DS_Store
+
+# Flutter generated
+Flutter/.dart_tool/
+Flutter/build/
+Flutter/android/local.properties

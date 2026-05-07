@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ddgyaosproje/services/auth_service.dart';
+import '../theme/app_theme.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -14,103 +15,144 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
 
-  final Color primaryColor = const Color(0xFFEC5B13);
-  final Color bgColor = const Color(0xFFF8F6F6); 
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: bgColor,
-      // Klavye açıldığında ekranın bozulmasın diye true yaptık.
-      // Aynı zamanda ekranın kendini yeniden boyutlandırması için bu özelliği yapıyoruz.
-      resizeToAvoidBottomInset: true, 
+      backgroundColor: AppColors.bg,
+      resizeToAvoidBottomInset: true,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center, // Her şeyi dikeyde ortalar
-            children: [
-              // Logo
-              Container(
-                width: 70,
-                height: 70,
-                decoration: BoxDecoration(
-                  color: primaryColor.withOpacity(0.1),
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(Icons.favorite_border, color: primaryColor, size: 35),
-              ),
-              const SizedBox(height: 16),
-              
-              // Başlıklar
-              const Text(
-                'Hesap Oluştur',
-                style: TextStyle(
-                  fontSize: 26, 
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF1E293B),
-                  letterSpacing: -0.5, // Harfler arasındaki boşluğu hafifçe daraltıyoruz.
-                ),
-              ),
-              const SizedBox(height: 6),
-              Text(
-                'Sağlık yolculuğuna bugün başla.',
-                style: TextStyle(color: Colors.grey.shade600, fontSize: 14),
-              ),
-              const SizedBox(height: 24),
-
-              // Form Kısmı
-              _buildTextField(controller: _nameController, hint: 'Ad Soyad', icon: Icons.person_outline),
-              const SizedBox(height: 10),
-              _buildTextField(controller: _emailController, hint: 'E-posta', icon: Icons.mail_outline, keyboardType: TextInputType.emailAddress),
-              const SizedBox(height: 10),
-              _buildTextField(controller: _passwordController, hint: 'Şifre', icon: Icons.lock_outline, isPassword: true),
-              const SizedBox(height: 10),
-              _buildTextField(controller: _confirmPasswordController, hint: 'Şifreyi Onayla', icon: Icons.lock_outline, isPassword: true),
-              
-              const SizedBox(height: 24),
-
-              // Kayıt ol
-              SizedBox(
-                width: double.infinity, // Butonun yatayda ekranı tam kaplamasını sağlıyoruz.
-                height: 52,
-                child: ElevatedButton(
-                  onPressed: _handleRegister,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: primaryColor,
-                    foregroundColor: Colors.white,
-                    elevation: 4,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        child: Center(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: 84,
+                  height: 84,
+                  decoration: BoxDecoration(
+                    color: AppColors.primary.withOpacity(0.10),
+                    shape: BoxShape.circle,
+                    boxShadow: AppShadows.soft,
                   ),
-                  child: const Text('Kayıt Ol', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                  child: const Icon(
+                    Icons.favorite_border,
+                    color: AppColors.primary,
+                    size: 40,
+                  ),
                 ),
-              ),
+                const SizedBox(height: 18),
+                const Text(
+                  "Hesap Oluştur",
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.w900,
+                    color: AppColors.textDark,
+                    letterSpacing: -0.5,
+                  ),
+                ),
+                const SizedBox(height: 6),
+                const Text(
+                  "Sağlık yolculuğuna bugün başla.",
+                  style: TextStyle(
+                    color: AppColors.textMuted,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                const SizedBox(height: 28),
 
-              const SizedBox(height: 20),
-              const Divider(thickness: 1),
-              
-              // Giriş yap
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text('Zaten hesabın var mı?', style: TextStyle(color: Colors.black54, fontSize: 14)),
-                  TextButton(
-                    onPressed: () => Navigator.pop(context),
-                    child: Text(
-                      'Giriş Yap',
-                      style: TextStyle(color: primaryColor, fontWeight: FontWeight.bold, fontSize: 14),
+                _buildTextField(
+                  controller: _nameController,
+                  hint: "Ad Soyad",
+                  icon: Icons.person_outline,
+                ),
+                const SizedBox(height: 12),
+                _buildTextField(
+                  controller: _emailController,
+                  hint: "E-posta",
+                  icon: Icons.mail_outline,
+                  keyboardType: TextInputType.emailAddress,
+                ),
+                const SizedBox(height: 12),
+                _buildTextField(
+                  controller: _passwordController,
+                  hint: "Şifre",
+                  icon: Icons.lock_outline,
+                  isPassword: true,
+                ),
+                const SizedBox(height: 12),
+                _buildTextField(
+                  controller: _confirmPasswordController,
+                  hint: "Şifreyi Onayla",
+                  icon: Icons.lock_outline,
+                  isPassword: true,
+                ),
+
+                const SizedBox(height: 28),
+
+                SizedBox(
+                  width: double.infinity,
+                  height: 58,
+                  child: ElevatedButton(
+                    onPressed: isLoading ? null : _handleRegister,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.primary,
+                      foregroundColor: Colors.white,
+                      elevation: 8,
+                      shadowColor: AppColors.primary.withOpacity(0.25),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
                     ),
+                    child: isLoading
+                        ? const CircularProgressIndicator(color: Colors.white)
+                        : const Text(
+                            "Kayıt Ol",
+                            style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w900,
+                            ),
+                          ),
                   ),
-                ],
-              ),
-            ],
+                ),
+
+                const SizedBox(height: 22),
+                const Divider(thickness: 1, color: AppColors.border),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      "Zaten hesabın var mı?",
+                      style: TextStyle(
+                        color: AppColors.textMuted,
+                        fontSize: 14,
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: const Text(
+                        "Giriş Yap",
+                        style: TextStyle(
+                          color: AppColors.primary,
+                          fontWeight: FontWeight.w900,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 
-  // Uygulama içindeki tüm Textfield widget'larının aynı tasarıma sahip olması için.
   Widget _buildTextField({
     required TextEditingController controller,
     required String hint,
@@ -119,65 +161,86 @@ class _RegisterScreenState extends State<RegisterScreen> {
     TextInputType keyboardType = TextInputType.text,
   }) {
     return Container(
-      height: 55, // Input yüksekliği sabitlendi
+      height: 58,
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        // Çok hafif bir dış gölge efekti ekliyoruz.
-        boxShadow: [
-          BoxShadow(color: Colors.black.withOpacity(0.03), blurRadius: 8, offset: const Offset(0, 2)),
-        ],
+        color: AppColors.card,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: AppColors.border),
+        boxShadow: AppShadows.soft,
       ),
       child: TextField(
         controller: controller,
         obscureText: isPassword,
         keyboardType: keyboardType,
-        style: const TextStyle(fontSize: 14),
+        style: const TextStyle(
+          fontSize: 14,
+          color: AppColors.textDark,
+          fontWeight: FontWeight.w600,
+        ),
         decoration: InputDecoration(
           hintText: hint,
-          hintStyle: TextStyle(color: Colors.grey.shade400, fontSize: 14),
-          prefixIcon: Icon(icon, color: primaryColor.withOpacity(0.6), size: 20),
+          hintStyle: const TextStyle(
+            color: AppColors.textLight,
+            fontSize: 14,
+          ),
+          prefixIcon: Icon(
+            icon,
+            color: AppColors.primary,
+            size: 21,
+          ),
           border: InputBorder.none,
-          // Yazının kutu içinde ortalı durması için sadece dikeyde iç boşluk veriyoruz.
-          contentPadding: const EdgeInsets.symmetric(vertical: 15),
+          contentPadding: const EdgeInsets.symmetric(vertical: 17),
         ),
       ),
     );
   }
 
   void _handleRegister() async {
-  // Boş alan kontrolü yapıyoruz.
-  if (_nameController.text.trim().isEmpty) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("Lütfen adınızı ve soyadınızı girin!")),
-    );
-    return;
+    final name = _nameController.text.trim();
+    final email = _emailController.text.trim();
+    final password = _passwordController.text.trim();
+    final confirmPassword = _confirmPasswordController.text.trim();
+
+    if (name.isEmpty) {
+      _showMessage("Lütfen adınızı ve soyadınızı girin!");
+      return;
+    }
+
+    if (email.isEmpty || password.isEmpty || confirmPassword.isEmpty) {
+      _showMessage("Lütfen tüm alanları doldurun!");
+      return;
+    }
+
+    if (password != confirmPassword) {
+      _showMessage("Şifreler uyuşmuyor!");
+      return;
+    }
+
+    setState(() => isLoading = true);
+
+    try {
+      final user = await AuthService().register(email, password, name);
+
+      if (!mounted) return;
+
+      setState(() => isLoading = false);
+
+      if (user != null) {
+        _showMessage("Başarıyla kayıt oldun!");
+        Navigator.pop(context);
+      }
+    } catch (e) {
+      if (!mounted) return;
+
+      setState(() => isLoading = false);
+
+      _showMessage(e.toString().replaceFirst("Exception: ", ""));
+    }
   }
 
-  // Şifrelerin uyuşup uyuşmadığını kontrol ediyoruz.
-  if (_passwordController.text != _confirmPasswordController.text) {
+  void _showMessage(String message) {
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("Şifreler uyuşmuyor!")),
-    );
-    return;
-  }
-
-  // Firebase'e name parametresini gönderiyoruz.
-  var user = await AuthService().register(
-    _emailController.text.trim(), 
-    _passwordController.text.trim(),
-    _nameController.text.trim(), // Firestore'a gidiyor.
-  );
-
-  if (user != null) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("Başarıyla kayıt oldun!")),
-    );
-    Navigator.pop(context); 
-  } else {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("Kayıt sırasında bir hata oluştu.")),
+      SnackBar(content: Text(message)),
     );
   }
-}
 }

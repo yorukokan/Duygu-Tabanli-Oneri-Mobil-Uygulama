@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'screens/login_screen.dart'; // Uygulamanın Giriş Yap Ekranı ile başlaması için.
+import 'package:firebase_auth/firebase_auth.dart';
+
+import 'screens/login_screen.dart';
+import 'screens/home.dart';
+import 'theme/app_theme.dart';
 
 void main() async {
-  // Flutter ve Firebase'i başlatabilmek için gerekli bağlantıları kurduk.
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(); 
-  
+  await Firebase.initializeApp();
+
   runApp(const MyApp());
 }
 
@@ -16,21 +19,36 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false, // Sağ üstteki Debug yazısını kaldırdık.
+      debugShowCheckedModeBanner: false,
       title: 'DDGYAOS',
-      theme: ThemeData(
-        primarySwatch: Colors.deepOrange, // Uygulama ana renk paletini Turuncu ayarladık.
-        elevatedButtonTheme: ElevatedButtonThemeData( // Butonlarında tek bir yerden teması gibi özellikleri ayarlıyoruz.
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.deepOrange,
-            foregroundColor: Colors.white,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30),
+      theme: AppTheme.light(),
+      home: const AuthGate(),
+    );
+  }
+}
+
+class AuthGate extends StatelessWidget {
+  const AuthGate({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<User?>(
+      stream: FirebaseAuth.instance.authStateChanges(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
             ),
-          ),
-        ),
-      ),
-      home: const LoginScreen(), // Uygulama açılınca Giriş ekranına gidecek şekilde ayarladık.
+          );
+        }
+
+        if (snapshot.hasData) {
+          return const HomeScreen();
+        }
+
+        return const LoginScreen();
+      },
     );
   }
 }
