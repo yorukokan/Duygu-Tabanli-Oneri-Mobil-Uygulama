@@ -442,10 +442,10 @@ Sistemde test edilen ana senaryolar:
 - [x] Hibrit duygu karar mekanizması oluşturuldu
 - [x] FastAPI backend iskeleti kuruldu
 - [x] API üzerinden duygu analizi yapılabilir hale getirildi
-- [ ] Flutter - Backend tam entegrasyonu
-- [ ] Kullanıcı testleri
-- [ ] Performans iyileştirme
-- [ ] Final demo ve sunum
+- [x] Flutter - Backend tam entegrasyonu
+- [x] Kullanıcı testleri
+- [x] Performans iyileştirme
+- [ ] Final ve sunum
 
 ---
 
