@@ -3,6 +3,7 @@ import 'food_suggestion_screen.dart';
 import 'activity_suggestion_screen.dart';
 import '../widgets/app_bottom_nav_bar.dart';
 import '../theme/app_theme.dart';
+import '../widgets/app_image.dart';
 
 class RecommendationsScreen extends StatelessWidget {
   final String finalEmotion;
@@ -78,11 +79,14 @@ class RecommendationsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final String formattedEmotion = _formatEmotionText(finalEmotion);
 
-    final Map<String, dynamic>? firstFood =
-        foodRecommendations.isNotEmpty ? foodRecommendations.first : null;
+    final Map<String, dynamic>? firstFood = foodRecommendations.isNotEmpty
+        ? foodRecommendations.first
+        : null;
 
     final Map<String, dynamic>? firstActivity =
-        activityRecommendations.isNotEmpty ? activityRecommendations.first : null;
+        activityRecommendations.isNotEmpty
+        ? activityRecommendations.first
+        : null;
 
     return Scaffold(
       backgroundColor: AppColors.bgAlt,
@@ -177,7 +181,9 @@ class RecommendationsScreen extends StatelessWidget {
                         shortText: firstFood != null
                             ? _getFoodShortText(firstFood)
                             : "Bu duygu durumu için şu an beslenme önerisi bulunamadı.",
-                        imageUrl: firstFood != null ? _getImageUrl(firstFood) : "",
+                        imageUrl: firstFood != null
+                            ? _getImageUrl(firstFood)
+                            : "",
                         isEmpty: firstFood == null,
                       ),
                     ),
@@ -201,8 +207,9 @@ class RecommendationsScreen extends StatelessWidget {
                         shortText: firstActivity != null
                             ? _getActivityShortText(firstActivity)
                             : "Bu duygu durumu için şu an aktivite önerisi bulunamadı.",
-                        imageUrl:
-                            firstActivity != null ? _getImageUrl(firstActivity) : "",
+                        imageUrl: firstActivity != null
+                            ? _getImageUrl(firstActivity)
+                            : "",
                         isEmpty: firstActivity == null,
                       ),
                     ),
@@ -281,18 +288,10 @@ class _RecommendationCard extends StatelessWidget {
         children: [
           Stack(
             children: [
-              Container(
+              SizedBox(
                 height: 220,
                 width: double.infinity,
-                decoration: BoxDecoration(
-                  color: AppColors.divider,
-                  image: imageUrl.isNotEmpty
-                      ? DecorationImage(
-                          image: NetworkImage(imageUrl),
-                          fit: BoxFit.cover,
-                        )
-                      : null,
-                ),
+                child: AppImage(imagePath: imageUrl, fit: BoxFit.cover),
               ),
               Positioned(
                 top: 14,

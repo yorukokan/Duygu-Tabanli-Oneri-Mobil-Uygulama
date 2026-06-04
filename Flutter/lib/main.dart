@@ -4,11 +4,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import 'screens/login_screen.dart';
 import 'screens/home.dart';
+import 'services/notification_service.dart';
 import 'theme/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp();
+
+  await NotificationService.init();
+  await NotificationService.scheduleAllDailyReminders();
 
   runApp(const MyApp());
 }
@@ -37,9 +42,7 @@ class AuthGate extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Scaffold(
-            body: Center(
-              child: CircularProgressIndicator(),
-            ),
+            body: Center(child: CircularProgressIndicator()),
           );
         }
 

@@ -6,6 +6,7 @@ import '../theme/app_theme.dart';
 import '../widgets/app_bottom_nav_bar.dart';
 import 'login_screen.dart';
 import 'health_preferences_screen.dart';
+import 'notification_settings_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -51,6 +52,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     final doc = await _firestore.collection("users").doc(currentUser.uid).get();
 
+    if (!mounted) return;
+
     setState(() {
       userData = doc.data();
       isLoading = false;
@@ -65,18 +68,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
       "avatarUrl": avatarUrl,
     });
 
+    if (!mounted) return;
+
     setState(() {
       userData ??= {};
       userData!["avatarUrl"] = avatarUrl;
     });
 
-    if (!mounted) return;
-
     Navigator.pop(context);
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("Avatar güncellendi")),
-    );
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(const SnackBar(content: Text("Avatar güncellendi")));
   }
 
   void showAvatarPicker() {
@@ -119,11 +122,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     physics: const NeverScrollableScrollPhysics(),
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      crossAxisSpacing: 18,
-                      mainAxisSpacing: 18,
-                      childAspectRatio: 1,
-                    ),
+                          crossAxisCount: 3,
+                          crossAxisSpacing: 18,
+                          mainAxisSpacing: 18,
+                          childAspectRatio: 1,
+                        ),
                     itemBuilder: (context, index) {
                       final avatarUrl = avatarUrls[index];
 
@@ -168,9 +171,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     if (!mounted) return;
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("Bilgi güncellendi")),
-    );
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(const SnackBar(content: Text("Bilgi güncellendi")));
   }
 
   void showEditDialog({
@@ -180,36 +183,125 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }) {
     final controller = TextEditingController(text: currentValue);
 
-    showDialog(
+    showModalBottomSheet(
       context: context,
-      builder: (_) => AlertDialog(
-        title: Text(title),
-        content: TextField(
-          controller: controller,
-          decoration: const InputDecoration(
-            border: OutlineInputBorder(),
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text("İptal"),
-          ),
-          TextButton(
-            onPressed: () async {
-              final value = controller.text.trim();
-              Navigator.pop(context);
-              await updateField(field, value);
-            },
-            child: const Text("Kaydet"),
-          ),
-        ],
+      isScrollControlled: true,
+      backgroundColor: AppColors.bg,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
       ),
+      builder: (context) {
+        return Padding(
+          padding: EdgeInsets.only(
+            left: 20,
+            right: 20,
+            top: 22,
+            bottom: MediaQuery.of(context).viewInsets.bottom + 24,
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: Container(
+                  width: 42,
+                  height: 5,
+                  decoration: BoxDecoration(
+                    color: AppColors.divider,
+                    borderRadius: BorderRadius.circular(999),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 22),
+              Text(
+                title,
+                style: const TextStyle(
+                  color: AppColors.textMain,
+                  fontSize: 22,
+                  fontWeight: FontWeight.w900,
+                ),
+              ),
+              const SizedBox(height: 18),
+              TextField(
+                controller: controller,
+                autofocus: true,
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: AppColors.card,
+                  hintText: "Yeni değer gir",
+                  hintStyle: const TextStyle(color: AppColors.textLight),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 16,
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16),
+                    borderSide: const BorderSide(color: AppColors.divider),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16),
+                    borderSide: const BorderSide(
+                      color: AppColors.primary,
+                      width: 2,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 22),
+              SizedBox(
+                width: double.infinity,
+                height: 54,
+                child: ElevatedButton(
+                  onPressed: () async {
+                    final value = controller.text.trim();
+                    if (value.isEmpty) return;
+
+                    Navigator.pop(context);
+                    await updateField(field, value);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.primary,
+                    elevation: 8,
+                    shadowColor: AppColors.primary.withOpacity(0.25),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  ),
+                  child: const Text(
+                    "Kaydet",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              SizedBox(
+                width: double.infinity,
+                height: 52,
+                child: TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text(
+                    "İptal",
+                    style: TextStyle(
+                      color: AppColors.textMuted,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 
   Future<void> sendPasswordReset() async {
-    final email = userData?["email"]?.toString() ?? user?.email;
+    final email = user?.email;
 
     if (email == null || email.isEmpty) return;
 
@@ -223,22 +315,107 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Future<void> logout() async {
-    final confirm = await showDialog<bool>(
+    final confirm = await showModalBottomSheet<bool>(
       context: context,
-      builder: (_) => AlertDialog(
-        title: const Text("Çıkış Yap"),
-        content: const Text("Hesabından çıkmak istiyor musun?"),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context, false),
-            child: const Text("Hayır"),
-          ),
-          TextButton(
-            onPressed: () => Navigator.pop(context, true),
-            child: const Text("Evet"),
-          ),
-        ],
+      backgroundColor: AppColors.bg,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
       ),
+      builder: (context) {
+        return SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(20, 22, 20, 24),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  width: 42,
+                  height: 5,
+                  decoration: BoxDecoration(
+                    color: AppColors.divider,
+                    borderRadius: BorderRadius.circular(999),
+                  ),
+                ),
+                const SizedBox(height: 22),
+                Container(
+                  width: 62,
+                  height: 62,
+                  decoration: BoxDecoration(
+                    color: Colors.red.withOpacity(0.10),
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(
+                    Icons.logout_rounded,
+                    color: Colors.red,
+                    size: 32,
+                  ),
+                ),
+                const SizedBox(height: 18),
+                const Text(
+                  "Çıkış Yap",
+                  style: TextStyle(
+                    color: AppColors.textMain,
+                    fontSize: 23,
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                const Text(
+                  "Hesabından çıkmak istediğine emin misin?",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: AppColors.textMuted,
+                    fontSize: 15,
+                    height: 1.5,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                const SizedBox(height: 24),
+                SizedBox(
+                  width: double.infinity,
+                  height: 54,
+                  child: ElevatedButton.icon(
+                    onPressed: () => Navigator.pop(context, true),
+                    icon: const Icon(Icons.logout_rounded, color: Colors.white),
+                    label: const Text(
+                      "Çıkış Yap",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                      elevation: 8,
+                      shadowColor: Colors.red.withOpacity(0.25),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                SizedBox(
+                  width: double.infinity,
+                  height: 52,
+                  child: TextButton(
+                    onPressed: () => Navigator.pop(context, false),
+                    child: const Text(
+                      "Vazgeç",
+                      style: TextStyle(
+                        color: AppColors.textMuted,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
 
     if (confirm != true) return;
@@ -257,7 +434,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final name = userData?["name"]?.toString() ?? "Kullanıcı";
-    final email = userData?["email"]?.toString() ?? user?.email ?? "-";
+    final email = user?.email ?? userData?["email"]?.toString() ?? "-";
 
     return Scaffold(
       backgroundColor: AppColors.bg,
@@ -288,31 +465,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Widget _header() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        const Text(
-          "Profilim",
-          style: TextStyle(
-            fontSize: 25,
-            fontWeight: FontWeight.w900,
-            color: AppColors.textMain,
-          ),
+    return const Center(
+      child: Text(
+        "Profilim",
+        style: TextStyle(
+          fontSize: 25,
+          fontWeight: FontWeight.w900,
+          color: AppColors.textMain,
         ),
-        Container(
-          width: 42,
-          height: 42,
-          decoration: BoxDecoration(
-            color: AppColors.card,
-            shape: BoxShape.circle,
-            boxShadow: AppShadows.soft,
-          ),
-          child: const Icon(
-            Icons.settings,
-            color: AppColors.textMain,
-          ),
-        ),
-      ],
+      ),
     );
   }
 
@@ -417,6 +578,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
           _infoRow(
             label: "Ad Soyad",
             value: name,
+            icon: Icons.edit_rounded,
+            editable: true,
             onTap: () => showEditDialog(
               title: "Ad Soyad Güncelle",
               field: "name",
@@ -427,16 +590,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
           _infoRow(
             label: "E-posta",
             value: email,
-            onTap: () => showEditDialog(
-              title: "E-posta Güncelle",
-              field: "email",
-              currentValue: email,
-            ),
+            icon: Icons.lock_outline_rounded,
+            editable: false,
+            onTap: null,
           ),
           _divider(),
           _infoRow(
             label: "Şifre",
-            value: "••••••••••••",
+            value: "Yenileme bağlantısı gönder",
+            icon: Icons.mail_outline_rounded,
+            editable: true,
             onTap: sendPasswordReset,
           ),
         ],
@@ -466,9 +629,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
             icon: Icons.notifications,
             title: "Bildirim Ayarları",
             onTap: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text("Bildirim ayarları sonra eklenecek"),
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const NotificationSettingsScreen(),
                 ),
               );
             },
@@ -481,10 +645,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget _infoRow({
     required String label,
     required String value,
-    required VoidCallback onTap,
+    required IconData icon,
+    required bool editable,
+    required VoidCallback? onTap,
   }) {
     return InkWell(
-      onTap: onTap,
+      onTap: editable ? onTap : null,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
         child: Row(
@@ -505,8 +671,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Text(
                     value,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      color: AppColors.textMain,
+                    style: TextStyle(
+                      color: editable
+                          ? AppColors.textMain
+                          : AppColors.textMuted,
                       fontSize: 16,
                       fontWeight: FontWeight.w800,
                     ),
@@ -514,10 +682,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ],
               ),
             ),
-            const Icon(
-              Icons.edit,
-              color: AppColors.primary,
-              size: 21,
+            Container(
+              width: 34,
+              height: 34,
+              decoration: BoxDecoration(
+                color: editable
+                    ? AppColors.primary.withOpacity(0.10)
+                    : AppColors.border,
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                icon,
+                color: editable ? AppColors.primary : AppColors.textLight,
+                size: 18,
+              ),
             ),
           ],
         ),
@@ -548,10 +726,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
             ),
-            const Icon(
-              Icons.chevron_right,
-              color: AppColors.textLight,
-            ),
+            const Icon(Icons.chevron_right, color: AppColors.textLight),
           ],
         ),
       ),

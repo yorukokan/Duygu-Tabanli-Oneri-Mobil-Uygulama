@@ -10,3 +10,18 @@ Flutter/lib/firebase_options.dart
 Flutter/.dart_tool/
 Flutter/build/
 Flutter/android/local.properties
+
+# AI model large/cache files
+Backend/model/local_emotion_model/
+*.safetensors
+*.pt
+*.pth
+*.h5
+*.onnx
+.cache/
+
+# Python virtual environments
+.venv/
+venv/
+Database/.venv/
+Backend/.venv/

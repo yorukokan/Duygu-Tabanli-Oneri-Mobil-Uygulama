@@ -1,8 +1,11 @@
 from transformers import pipeline
 from PIL import Image
 import cv2
+import os
 
-MODEL_NAME = "abhilash88/face-emotion-detection"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "local_emotion_model")
+
 LABEL_MAP = {
     "LABEL_0": "angry",
     "LABEL_1": "disgust",
@@ -13,8 +16,11 @@ LABEL_MAP = {
     "LABEL_6": "neutral",
 }
 
-classifier = pipeline("image-classification", model=MODEL_NAME)
-
+classifier = pipeline(
+    "image-classification",
+    model=MODEL_PATH,
+    image_processor=MODEL_PATH,
+)
 def detect_face(image_path: str, output_face_path: str = "cropped_face.jpg") -> str:
     image = cv2.imread(image_path)
     if image is None:

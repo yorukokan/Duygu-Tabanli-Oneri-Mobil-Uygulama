@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../theme/app_theme.dart';
+import '../widgets/app_image.dart';
 
 class FoodDetailScreen extends StatelessWidget {
   final int id;
@@ -60,20 +61,14 @@ class FoodDetailScreen extends StatelessWidget {
         children: [
           Column(
             children: [
-              Container(
-                width: double.infinity,
-                height: MediaQuery.of(context).size.height * 0.40,
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.vertical(
-                    bottom: Radius.circular(40),
-                  ),
-                  color: AppColors.divider,
-                  image: imageUrl.isNotEmpty
-                      ? DecorationImage(
-                          image: NetworkImage(imageUrl),
-                          fit: BoxFit.cover,
-                        )
-                      : null,
+              ClipRRect(
+                borderRadius: const BorderRadius.vertical(
+                  bottom: Radius.circular(40),
+                ),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: MediaQuery.of(context).size.height * 0.40,
+                  child: AppImage(imagePath: imageUrl, fit: BoxFit.cover),
                 ),
               ),
               Expanded(

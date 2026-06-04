@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../theme/app_theme.dart';
+import '../widgets/app_image.dart';
 
 class ActivityDetailScreen extends StatelessWidget {
   final int id;
@@ -41,20 +42,15 @@ class ActivityDetailScreen extends StatelessWidget {
       "uid": user.uid,
       "date": today,
       "items": FieldValue.arrayUnion([
-        {
-          "id": id,
-          "type": type,
-          "title": title,
-          "completed": false,
-        }
+        {"id": id, "type": type, "title": title, "completed": false},
       ]),
     }, SetOptions(merge: true));
 
     if (!context.mounted) return;
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("Planıma eklendi")),
-    );
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(const SnackBar(content: Text("Planıma eklendi")));
   }
 
   @override
@@ -65,20 +61,14 @@ class ActivityDetailScreen extends StatelessWidget {
         children: [
           Column(
             children: [
-              Container(
-                width: double.infinity,
-                height: 320,
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.vertical(
-                    bottom: Radius.circular(40),
-                  ),
-                  color: AppColors.divider,
-                  image: imageUrl.isNotEmpty
-                      ? DecorationImage(
-                          image: NetworkImage(imageUrl),
-                          fit: BoxFit.cover,
-                        )
-                      : null,
+              ClipRRect(
+                borderRadius: const BorderRadius.vertical(
+                  bottom: Radius.circular(40),
+                ),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 320,
+                  child: AppImage(imagePath: imageUrl, fit: BoxFit.cover),
                 ),
               ),
               Expanded(
@@ -116,8 +106,7 @@ class ActivityDetailScreen extends StatelessWidget {
                             const SizedBox(height: 22),
                             Container(
                               height: 1,
-                              margin:
-                                  const EdgeInsets.symmetric(horizontal: 6),
+                              margin: const EdgeInsets.symmetric(horizontal: 6),
                               color: AppColors.divider,
                             ),
                             const SizedBox(height: 22),
@@ -216,11 +205,7 @@ class _InfoRow extends StatelessWidget {
   final String title;
   final String text;
 
-  const _InfoRow({
-    required this.icon,
-    required this.title,
-    required this.text,
-  });
+  const _InfoRow({required this.icon, required this.title, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -234,11 +219,7 @@ class _InfoRow extends StatelessWidget {
             color: AppColors.primary.withOpacity(0.15),
             shape: BoxShape.circle,
           ),
-          child: Icon(
-            icon,
-            color: AppColors.primary,
-            size: 26,
-          ),
+          child: Icon(icon, color: AppColors.primary, size: 26),
         ),
         const SizedBox(width: 14),
         Expanded(

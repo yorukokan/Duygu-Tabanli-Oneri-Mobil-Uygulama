@@ -3,6 +3,7 @@ import 'activity_detail_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../theme/app_theme.dart';
+import '../widgets/app_image.dart';
 
 class ActivitySuggestionScreen extends StatefulWidget {
   final List<dynamic> activityRecommendations;
@@ -83,17 +84,40 @@ class _ActivitySuggestionScreenState extends State<ActivitySuggestionScreen> {
     if (user == null) return;
 
     final item = widget.activityRecommendations[currentIndex];
+    final todayKey = DateTime.now().toIso8601String().split("T")[0];
+
+    final itemId = item["id"];
+    final title = item["isim"]?.toString() ?? "Aktivite Önerisi";
+
+    final existing = await FirebaseFirestore.instance
+        .collection("completedRecommendations")
+        .where("uid", isEqualTo: user.uid)
+        .where("itemId", isEqualTo: itemId)
+        .where("type", isEqualTo: "activity")
+        .where("dateKey", isEqualTo: todayKey)
+        .limit(1)
+        .get();
+
+    if (existing.docs.isNotEmpty) {
+      if (!mounted) return;
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Bu öneriyi bugün zaten tamamladın")),
+      );
+      return;
+    }
 
     await FirebaseFirestore.instance
         .collection("completedRecommendations")
         .add({
-      "uid": user.uid,
-      "itemId": item["id"],
-      "type": "activity",
-      "title": item["isim"],
-      "emotion": widget.finalEmotion,
-      "date": FieldValue.serverTimestamp(),
-    });
+          "uid": user.uid,
+          "itemId": itemId,
+          "type": "activity",
+          "title": title,
+          "emotion": widget.finalEmotion,
+          "dateKey": todayKey,
+          "date": FieldValue.serverTimestamp(),
+        });
 
     if (!mounted) return;
 
@@ -107,8 +131,9 @@ class _ActivitySuggestionScreenState extends State<ActivitySuggestionScreen> {
   @override
   Widget build(BuildContext context) {
     final bool hasData = widget.activityRecommendations.isNotEmpty;
-    final dynamic item =
-        hasData ? widget.activityRecommendations[currentIndex] : null;
+    final dynamic item = hasData
+        ? widget.activityRecommendations[currentIndex]
+        : null;
 
     final String title = hasData
         ? _safeText(item["isim"], "Aktivite Önerisi")
@@ -129,8 +154,9 @@ class _ActivitySuggestionScreenState extends State<ActivitySuggestionScreen> {
         : "Bu aktiviteyi sakin ve kontrollü şekilde uygulayabilirsin.";
 
     final String imageUrl = hasData ? _imageFromActivity(item) : "";
-    final String badgeText =
-        hasData ? _activityBadgeText(item) : "ÖNERİLEN AKTİVİTE";
+    final String badgeText = hasData
+        ? _activityBadgeText(item)
+        : "ÖNERİLEN AKTİVİTE";
     final Color badgeColor = _activityBadgeColor(badgeText);
     final IconData badgeIcon = _activityBadgeIcon(badgeText);
 
@@ -223,17 +249,12 @@ class _ActivitySuggestionScreenState extends State<ActivitySuggestionScreen> {
                                     flex: 2,
                                     child: Stack(
                                       children: [
-                                        Container(
+                                        SizedBox(
                                           width: double.infinity,
-                                          decoration: BoxDecoration(
-                                            color: AppColors.divider,
-                                            image: imageUrl.isNotEmpty
-                                                ? DecorationImage(
-                                                    image:
-                                                        NetworkImage(imageUrl),
-                                                    fit: BoxFit.cover,
-                                                  )
-                                                : null,
+                                          height: double.infinity,
+                                          child: AppImage(
+                                            imagePath: imageUrl,
+                                            fit: BoxFit.cover,
                                           ),
                                         ),
                                         Positioned(
@@ -314,15 +335,19 @@ class _ActivitySuggestionScreenState extends State<ActivitySuggestionScreen> {
                                                         MaterialPageRoute(
                                                           builder: (context) =>
                                                               ActivityDetailScreen(
-                                                            id: item["id"] ?? 0,
-                                                            type: "activity",
-                                                            title: title,
-                                                            scientificBenefit:
-                                                                scientificBenefit,
-                                                            howToApply:
-                                                                applicationText,
-                                                            imageUrl: imageUrl,
-                                                          ),
+                                                                id:
+                                                                    item["id"] ??
+                                                                    0,
+                                                                type:
+                                                                    "activity",
+                                                                title: title,
+                                                                scientificBenefit:
+                                                                    scientificBenefit,
+                                                                howToApply:
+                                                                    applicationText,
+                                                                imageUrl:
+                                                                    imageUrl,
+                                                              ),
                                                         ),
                                                       );
                                                     }
@@ -330,22 +355,24 @@ class _ActivitySuggestionScreenState extends State<ActivitySuggestionScreen> {
                                               child: Container(
                                                 padding:
                                                     const EdgeInsets.symmetric(
-                                                  horizontal: 26,
-                                                  vertical: 13,
-                                                ),
+                                                      horizontal: 26,
+                                                      vertical: 13,
+                                                    ),
                                                 decoration: BoxDecoration(
                                                   color: AppColors.primary,
                                                   borderRadius:
                                                       BorderRadius.circular(
-                                                    999,
-                                                  ),
+                                                        999,
+                                                      ),
                                                   boxShadow: [
                                                     BoxShadow(
                                                       color: AppColors.primary
                                                           .withOpacity(0.25),
                                                       blurRadius: 10,
-                                                      offset:
-                                                          const Offset(0, 4),
+                                                      offset: const Offset(
+                                                        0,
+                                                        4,
+                                                      ),
                                                     ),
                                                   ],
                                                 ),

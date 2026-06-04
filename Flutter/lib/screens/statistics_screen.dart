@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
 import '../widgets/app_bottom_nav_bar.dart';
 import '../theme/app_theme.dart';
 
@@ -12,14 +13,23 @@ class StatisticsScreen extends StatefulWidget {
 }
 
 class _StatisticsScreenState extends State<StatisticsScreen> {
+  bool isLoading = true;
+
   int totalCompleted = 0;
   int foodCount = 0;
   int activityCount = 0;
 
-  List<String> weeklyEmotions = List.filled(7, "nötr_genel_denge");
-  List<Map<String, dynamic>> goodItems = [];
+  int weeklyCompleted = 0;
+  int weeklyTotal = 0;
 
-  bool isLoading = true;
+  int todayMoodCheckCount = 0;
+  String latestMoodCheck = "Yok";
+
+  String todayMood = "normal";
+  String todayMoodLabel = "Normal";
+
+  List<String> weeklyEmotions = List.filled(7, "normal");
+  List<Map<String, dynamic>> goodItems = [];
 
   @override
   void initState() {
@@ -29,13 +39,19 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
 
   Future<void> loadStats() async {
     final user = FirebaseAuth.instance.currentUser;
+
     if (user == null) {
       setState(() => isLoading = false);
       return;
     }
 
-    await loadCompleted(user.uid);
-    await loadMoodHistory(user.uid);
+    await Future.wait([
+      loadCompleted(user.uid),
+      loadWeeklyEvaluations(user.uid),
+      loadTodayMoodChecks(user.uid),
+    ]);
+
+    if (!mounted) return;
 
     setState(() => isLoading = false);
   }
@@ -46,109 +62,164 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
         .where("uid", isEqualTo: uid)
         .get();
 
-    int food = 0;
-    int activity = 0;
+    int foods = 0;
+    int activities = 0;
+
+    for (final doc in snapshot.docs) {
+      final data = doc.data();
+
+      if (data["type"] == "food") foods++;
+      if (data["type"] == "activity") activities++;
+    }
 
     final docs = snapshot.docs;
-
-    for (final doc in docs) {
-      final data = doc.data();
-      if (data["type"] == "food") food++;
-      if (data["type"] == "activity") activity++;
-    }
 
     docs.sort((a, b) {
       final aDate = (a.data()["date"] as Timestamp?)?.toDate();
       final bDate = (b.data()["date"] as Timestamp?)?.toDate();
 
       if (aDate == null || bDate == null) return 0;
+
       return bDate.compareTo(aDate);
     });
 
+    if (!mounted) return;
+
     setState(() {
       totalCompleted = docs.length;
-      foodCount = food;
-      activityCount = activity;
-      goodItems = docs.take(2).map((e) => e.data()).toList();
+      foodCount = foods;
+      activityCount = activities;
+      goodItems = docs.take(3).map((e) => e.data()).toList();
     });
   }
 
-  Future<void> loadMoodHistory(String uid) async {
+  Future<void> loadWeeklyEvaluations(String uid) async {
     final now = DateTime.now();
 
-    final startOfWeek = DateTime(now.year, now.month, now.day)
-        .subtract(Duration(days: now.weekday - 1));
+    final startOfWeek = DateTime(
+      now.year,
+      now.month,
+      now.day,
+    ).subtract(Duration(days: now.weekday - 1));
 
     final snapshot = await FirebaseFirestore.instance
-        .collection("moodHistory")
+        .collection("dailyEvaluations")
         .where("uid", isEqualTo: uid)
-        .where("date", isGreaterThanOrEqualTo: Timestamp.fromDate(startOfWeek))
-        .orderBy("date")
+        .where(
+          "createdAt",
+          isGreaterThanOrEqualTo: Timestamp.fromDate(startOfWeek),
+        )
+        .orderBy("createdAt")
         .get();
 
-    final emotions = List<String>.filled(7, "nötr_genel_denge");
+    final emotions = List<String>.filled(7, "normal");
+
+    int completed = 0;
+    int total = 0;
+
+    String latestMood = "normal";
+    String latestLabel = "Normal";
 
     for (final doc in snapshot.docs) {
       final data = doc.data();
 
-      final date = (data["date"] as Timestamp?)?.toDate();
-      if (date == null) continue;
+      final createdAt = (data["createdAt"] as Timestamp?)?.toDate();
+      if (createdAt == null) continue;
 
-      final index = date.weekday - 1;
-      emotions[index] =
-          data["finalEmotion"]?.toString() ?? "nötr_genel_denge";
+      final index = createdAt.weekday - 1;
+
+      emotions[index] = data["endDayEmotion"]?.toString() ?? "normal";
+
+      completed += (data["completedCount"] ?? 0) as int;
+      total += (data["totalCount"] ?? 0) as int;
+
+      latestMood = data["endDayEmotion"]?.toString() ?? "normal";
+      latestLabel = data["endDayMoodLabel"]?.toString() ?? "Normal";
     }
+
+    if (!mounted) return;
 
     setState(() {
       weeklyEmotions = emotions;
+      weeklyCompleted = completed;
+      weeklyTotal = total;
+      todayMood = latestMood;
+      todayMoodLabel = latestLabel;
     });
   }
 
-  String normalizeEmotion(String emotion) {
-    return emotion
-        .trim()
-        .toLowerCase()
-        .replaceAll(" ", "_")
-        .replaceAll("/", "_")
-        .replaceAll("__", "_");
+  Future<void> loadTodayMoodChecks(String uid) async {
+    final now = DateTime.now();
+    final startOfDay = DateTime(now.year, now.month, now.day);
+
+    final snapshot = await FirebaseFirestore.instance
+        .collection("moodHistory")
+        .where("uid", isEqualTo: uid)
+        .where("date", isGreaterThanOrEqualTo: Timestamp.fromDate(startOfDay))
+        .orderBy("date", descending: true)
+        .get();
+
+    String latest = "Yok";
+
+    if (snapshot.docs.isNotEmpty) {
+      latest = snapshot.docs.first.data()["finalEmotion"]?.toString() ?? "Yok";
+    }
+
+    if (!mounted) return;
+
+    setState(() {
+      todayMoodCheckCount = snapshot.docs.length;
+      latestMoodCheck = formatMoodText(latest);
+    });
+  }
+
+  String formatMoodText(String value) {
+    if (value.trim().isEmpty) return "Yok";
+
+    return value
+        .replaceAll("_", " ")
+        .replaceAll("nötr", "Nötr")
+        .replaceAll("notr", "Nötr")
+        .replaceAll("genel denge", "Genel Denge")
+        .replaceAll("heyecan yüksek enerji", "Heyecan / Yüksek Enerji")
+        .replaceAll("kaygı anksiyete", "Kaygı / Anksiyete")
+        .replaceAll("kaygi anksiyete", "Kaygı / Anksiyete")
+        .replaceAll("depresif hüzünlü", "Depresif / Hüzünlü")
+        .replaceAll("depresif huzunlu", "Depresif / Hüzünlü")
+        .replaceAll("öfke gerginlik", "Öfke / Gerginlik")
+        .replaceAll("ofke gerginlik", "Öfke / Gerginlik")
+        .replaceAll("odak eksikliği", "Odak Eksikliği")
+        .replaceAll("odak eksikligi", "Odak Eksikliği")
+        .replaceAll("yüksek stres", "Yüksek Stres")
+        .replaceAll("yuksek stres", "Yüksek Stres")
+        .replaceAll("düşük enerji yorgunluk", "Düşük Enerji / Yorgunluk")
+        .replaceAll("dusuk enerji yorgunluk", "Düşük Enerji / Yorgunluk")
+        .replaceAll("uyku huzursuzluk", "Uyku / Huzursuzluk")
+        .replaceAll("motivasyon eksikliği", "Motivasyon Eksikliği")
+        .replaceAll("motivasyon eksikligi", "Motivasyon Eksikliği")
+        .replaceAll("mutluluk", "Mutluluk");
   }
 
   double emotionToY(String emotion) {
-    final e = normalizeEmotion(emotion);
-
-    switch (e) {
-      case "mutluluk":
+    switch (emotion.toLowerCase()) {
+      case "harika":
+        return 10;
+      case "mutlu":
         return 18;
-      case "heyecan_yüksek_enerji":
-      case "heyecan_yuksek_enerji":
-      case "yuksek_enerji":
-        return 28;
-      case "nötr_genel_denge":
-      case "notr_genel_denge":
+      case "heyecanli":
+        return 25;
+      case "sakin":
+        return 35;
+      case "normal":
         return 50;
-      case "odak_eksikliği":
-      case "odak_eksikligi":
-        return 55;
-      case "motivasyon_eksikliği":
-      case "motivasyon_eksikligi":
+      case "yorgun":
         return 65;
-      case "düşük_enerji_yorgunluk":
-      case "dusuk_enerji_yorgunluk":
-        return 70;
-      case "uyku_huzursuzluk":
-        return 72;
-      case "kaygı_anksiyete":
-      case "kaygi_anksiyete":
+      case "kaygili":
         return 78;
-      case "depresif_hüzünlü":
-      case "depresif_huzunlu":
-        return 84;
-      case "öfke_gerginlik":
-      case "ofke_gerginlik":
+      case "uzgun":
         return 88;
-      case "yüksek_stres":
-      case "yuksek_stres":
-        return 92;
+      case "kizgin":
+        return 95;
       default:
         return 50;
     }
@@ -158,6 +229,11 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
     if (type == "food") return Icons.restaurant_rounded;
     if (type == "activity") return Icons.directions_walk_rounded;
     return Icons.auto_awesome_rounded;
+  }
+
+  double get weeklyRate {
+    if (weeklyTotal == 0) return 0;
+    return weeklyCompleted / weeklyTotal;
   }
 
   @override
@@ -179,13 +255,19 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                         "İstatistikler",
                         style: TextStyle(
                           color: AppColors.textMain,
-                          fontSize: 20,
+                          fontSize: 22,
                           fontWeight: FontWeight.w900,
                         ),
                       ),
                     ),
                     const SizedBox(height: 22),
-                    _buildChart(days),
+                    _buildWeeklyChart(days),
+                    const SizedBox(height: 18),
+                    _buildTodayMood(),
+                    const SizedBox(height: 18),
+                    _buildMoodCheckSummary(),
+                    const SizedBox(height: 18),
+                    _buildWeeklySuccess(),
                     const SizedBox(height: 18),
                     _buildCompleted(),
                     const SizedBox(height: 18),
@@ -198,36 +280,22 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
     );
   }
 
-  Widget _buildChart(List<String> days) {
+  Widget _buildWeeklyChart(List<String> days) {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: _cardDecoration(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Row(
-            children: [
-              Expanded(
-                child: Text(
-                  "Haftalık Duygu Analizi",
-                  style: TextStyle(
-                    color: AppColors.textMain,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w800,
-                  ),
-                ),
-              ),
-              Text(
-                "Bu Hafta",
-                style: TextStyle(
-                  color: AppColors.textLight,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ],
+          const Text(
+            "Haftalık Ruh Hali",
+            style: TextStyle(
+              color: AppColors.textMain,
+              fontSize: 17,
+              fontWeight: FontWeight.w900,
+            ),
           ),
-          const SizedBox(height: 18),
+          const SizedBox(height: 20),
           SizedBox(
             height: 190,
             child: Row(
@@ -235,14 +303,22 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                 const Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Icon(Icons.sentiment_very_satisfied_rounded,
-                        size: 18, color: AppColors.textLight),
-                    Icon(Icons.sentiment_satisfied_alt_rounded,
-                        size: 18, color: AppColors.textLight),
-                    Icon(Icons.sentiment_neutral_rounded,
-                        size: 18, color: AppColors.textLight),
-                    Icon(Icons.sentiment_dissatisfied_rounded,
-                        size: 18, color: AppColors.textLight),
+                    Icon(
+                      Icons.sentiment_very_satisfied_rounded,
+                      color: AppColors.textLight,
+                    ),
+                    Icon(
+                      Icons.sentiment_satisfied_alt_rounded,
+                      color: AppColors.textLight,
+                    ),
+                    Icon(
+                      Icons.sentiment_neutral_rounded,
+                      color: AppColors.textLight,
+                    ),
+                    Icon(
+                      Icons.sentiment_dissatisfied_rounded,
+                      color: AppColors.textLight,
+                    ),
                   ],
                 ),
                 const SizedBox(width: 10),
@@ -258,23 +334,171 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
               ],
             ),
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 14),
           Padding(
             padding: const EdgeInsets.only(left: 28),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: days
-                  .map(
-                    (day) => Text(
-                      day,
-                      style: const TextStyle(
-                        color: AppColors.textMuted,
-                        fontSize: 11,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  )
-                  .toList(),
+              children: days.map((day) {
+                return Text(
+                  day,
+                  style: const TextStyle(
+                    color: AppColors.textMuted,
+                    fontSize: 11,
+                    fontWeight: FontWeight.w700,
+                  ),
+                );
+              }).toList(),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTodayMood() {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(20),
+      decoration: _cardDecoration(),
+      child: Row(
+        children: [
+          Container(
+            width: 52,
+            height: 52,
+            decoration: BoxDecoration(
+              color: AppColors.primary.withOpacity(0.12),
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: const Icon(
+              Icons.nightlight_round,
+              color: AppColors.primary,
+            ),
+          ),
+          const SizedBox(width: 14),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "Bugünkü Gün Sonu Mood",
+                  style: TextStyle(
+                    color: AppColors.textMuted,
+                    fontSize: 13,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  todayMoodLabel,
+                  style: const TextStyle(
+                    color: AppColors.textMain,
+                    fontSize: 22,
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildMoodCheckSummary() {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(20),
+      decoration: _cardDecoration(),
+      child: Row(
+        children: [
+          Container(
+            width: 52,
+            height: 52,
+            decoration: BoxDecoration(
+              color: AppColors.primary.withOpacity(0.12),
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: const Icon(
+              Icons.psychology_alt_rounded,
+              color: AppColors.primary,
+              size: 30,
+            ),
+          ),
+          const SizedBox(width: 14),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "Bugünkü Mood Kontrolü",
+                  style: TextStyle(
+                    color: AppColors.textMuted,
+                    fontSize: 13,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  "$todayMoodCheckCount kez modunu kontrol ettin",
+                  style: const TextStyle(
+                    color: AppColors.textMain,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  "Son analiz: $latestMoodCheck",
+                  style: const TextStyle(
+                    color: AppColors.textMuted,
+                    fontSize: 13,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildWeeklySuccess() {
+    final percent = (weeklyRate * 100).round();
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(20),
+      decoration: _cardDecoration(),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            "Haftalık Başarı Oranı",
+            style: TextStyle(
+              color: AppColors.textMain,
+              fontSize: 17,
+              fontWeight: FontWeight.w900,
+            ),
+          ),
+          const SizedBox(height: 12),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(999),
+            child: LinearProgressIndicator(
+              value: weeklyRate,
+              minHeight: 10,
+              color: AppColors.primary,
+              backgroundColor: AppColors.divider,
+            ),
+          ),
+          const SizedBox(height: 12),
+          Text(
+            "%$percent görev tamamlama başarısı",
+            style: const TextStyle(
+              color: AppColors.textMuted,
+              fontSize: 14,
+              fontWeight: FontWeight.w700,
             ),
           ),
         ],
@@ -294,20 +518,20 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
             "Tamamlanan Öneriler",
             style: TextStyle(
               color: AppColors.textMain,
-              fontSize: 16,
-              fontWeight: FontWeight.w800,
+              fontSize: 17,
+              fontWeight: FontWeight.w900,
             ),
           ),
           const SizedBox(height: 8),
           Text(
-            "Toplam $totalCompleted Öneri Tamamlandı",
+            "$totalCompleted öneri tamamlandı",
             style: const TextStyle(
               color: AppColors.textDark,
-              fontSize: 20,
+              fontSize: 24,
               fontWeight: FontWeight.w900,
             ),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 14),
           Row(
             children: [
               _chip(Icons.restaurant_rounded, "$foodCount Besin"),
@@ -333,8 +557,8 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
               "Sana İyi Gelenler",
               style: TextStyle(
                 color: AppColors.textMain,
-                fontSize: 16,
-                fontWeight: FontWeight.w800,
+                fontSize: 17,
+                fontWeight: FontWeight.w900,
               ),
             ),
           ),
@@ -347,7 +571,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                 style: TextStyle(
                   color: AppColors.textMuted,
                   fontSize: 14,
-                  fontWeight: FontWeight.w500,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             )
@@ -359,8 +583,10 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
               return Column(
                 children: [
                   ListTile(
-                    contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 18, vertical: 6),
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 18,
+                      vertical: 4,
+                    ),
                     leading: Container(
                       width: 42,
                       height: 42,
@@ -382,10 +608,6 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                         fontWeight: FontWeight.w800,
                       ),
                     ),
-                    trailing: const Icon(
-                      Icons.chevron_right_rounded,
-                      color: AppColors.textLight,
-                    ),
                   ),
                   const Divider(height: 1, color: AppColors.border),
                 ],
@@ -398,14 +620,21 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
 
   Widget _chip(IconData icon, String text) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 9),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 14,
+        vertical: 9,
+      ),
       decoration: BoxDecoration(
         color: AppColors.primary.withOpacity(0.12),
         borderRadius: BorderRadius.circular(999),
       ),
       child: Row(
         children: [
-          Icon(icon, color: AppColors.primary, size: 18),
+          Icon(
+            icon,
+            color: AppColors.primary,
+            size: 18,
+          ),
           const SizedBox(width: 7),
           Text(
             text,
@@ -423,7 +652,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
   BoxDecoration _cardDecoration() {
     return BoxDecoration(
       color: AppColors.card,
-      borderRadius: BorderRadius.circular(18),
+      borderRadius: BorderRadius.circular(20),
       border: Border.all(color: AppColors.border),
       boxShadow: AppShadows.soft,
     );
@@ -447,7 +676,12 @@ class ChartPainter extends CustomPainter {
 
     for (int i = 1; i <= 4; i++) {
       final y = size.height * (i / 5);
-      canvas.drawLine(Offset(0, y), Offset(size.width, y), gridPaint);
+
+      canvas.drawLine(
+        Offset(0, y),
+        Offset(size.width, y),
+        gridPaint,
+      );
     }
 
     final linePaint = Paint()
@@ -460,10 +694,10 @@ class ChartPainter extends CustomPainter {
       ..color = Colors.white
       ..style = PaintingStyle.fill;
 
-    final pointBorderPaint = Paint()
+    final borderPaint = Paint()
       ..color = AppColors.primary
-      ..strokeWidth = 2
-      ..style = PaintingStyle.stroke;
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 2;
 
     final path = Path();
 
@@ -484,8 +718,17 @@ class ChartPainter extends CustomPainter {
       final x = i * (size.width / (emotions.length - 1));
       final y = (map(emotions[i]) / 100) * size.height;
 
-      canvas.drawCircle(Offset(x, y), 4, pointPaint);
-      canvas.drawCircle(Offset(x, y), 4, pointBorderPaint);
+      canvas.drawCircle(
+        Offset(x, y),
+        4,
+        pointPaint,
+      );
+
+      canvas.drawCircle(
+        Offset(x, y),
+        4,
+        borderPaint,
+      );
     }
   }
 

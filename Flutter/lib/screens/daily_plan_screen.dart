@@ -50,10 +50,10 @@ class _DailyPlanScreenState extends State<DailyPlanScreen> {
         .collection("dailyPlans")
         .doc("${user.uid}_$todayKey")
         .set({
-      "uid": user.uid,
-      "date": todayKey,
-      "items": items,
-    }, SetOptions(merge: true));
+          "uid": user.uid,
+          "date": todayKey,
+          "items": items,
+        }, SetOptions(merge: true));
   }
 
   Future<void> toggleComplete(int index) async {
@@ -73,15 +73,30 @@ class _DailyPlanScreenState extends State<DailyPlanScreen> {
         .update({"items": items});
 
     if (newValue == true) {
+      final type = item["type"]?.toString() ?? "";
+      final title = item["title"]?.toString() ?? "Öneri";
+
+      final existing = await FirebaseFirestore.instance
+          .collection("completedRecommendations")
+          .where("uid", isEqualTo: user.uid)
+          .where("itemId", isEqualTo: item["id"])
+          .where("type", isEqualTo: type)
+          .where("dateKey", isEqualTo: todayKey)
+          .limit(1)
+          .get();
+
+      if (existing.docs.isNotEmpty) return;
+
       await FirebaseFirestore.instance
           .collection("completedRecommendations")
           .add({
-        "uid": user.uid,
-        "itemId": item["id"],
-        "type": item["type"],
-        "title": item["title"],
-        "date": FieldValue.serverTimestamp(),
-      });
+            "uid": user.uid,
+            "itemId": item["id"],
+            "type": type,
+            "title": title,
+            "dateKey": todayKey,
+            "date": FieldValue.serverTimestamp(),
+          });
     }
   }
 
@@ -193,9 +208,7 @@ class _DailyPlanScreenState extends State<DailyPlanScreen> {
       padding: const EdgeInsets.fromLTRB(14, 14, 14, 14),
       decoration: BoxDecoration(
         color: AppColors.bg,
-        border: const Border(
-          bottom: BorderSide(color: AppColors.border),
-        ),
+        border: const Border(bottom: BorderSide(color: AppColors.border)),
       ),
       child: Row(
         children: [
@@ -275,9 +288,7 @@ class _DailyPlanScreenState extends State<DailyPlanScreen> {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
-                color: completed
-                    ? AppColors.textLight
-                    : AppColors.textMain,
+                color: completed ? AppColors.textLight : AppColors.textMain,
                 decoration: completed
                     ? TextDecoration.lineThrough
                     : TextDecoration.none,
@@ -286,8 +297,7 @@ class _DailyPlanScreenState extends State<DailyPlanScreen> {
           ),
           IconButton(
             onPressed: () => deleteItem(index),
-            icon: const Icon(Icons.delete_outline,
-                color: AppColors.textLight),
+            icon: const Icon(Icons.delete_outline, color: AppColors.textLight),
           ),
         ],
       ),

@@ -3,6 +3,7 @@ import 'food_detail_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../theme/app_theme.dart';
+import '../widgets/app_image.dart';
 
 class FoodSuggestionScreen extends StatefulWidget {
   final List<dynamic> foodRecommendations;
@@ -37,16 +38,24 @@ class _FoodSuggestionScreenState extends State<FoodSuggestionScreen> {
     final dynamic tags = item["icerik_etiketleri"];
     final dynamic risks = item["riskli_hastaliklar"];
 
-    if (warnings is List && warnings.isNotEmpty) return warnings.first.toString();
+    if (warnings is List && warnings.isNotEmpty)
+      return warnings.first.toString();
 
     if (tags is List && tags.isNotEmpty) {
       final lowered = tags.map((e) => e.toString().toLowerCase()).toList();
 
-      if (lowered.any((e) => e.contains("alerjen içermez") || e.contains("alerjen icermez"))) return "Alerjen İçermez";
+      if (lowered.any(
+        (e) => e.contains("alerjen içermez") || e.contains("alerjen icermez"),
+      ))
+        return "Alerjen İçermez";
       if (lowered.any((e) => e.contains("glutensiz"))) return "Glutensiz";
-      if (lowered.any((e) => e.contains("şekersiz") || e.contains("sekersiz"))) return "Şekersiz";
+      if (lowered.any((e) => e.contains("şekersiz") || e.contains("sekersiz")))
+        return "Şekersiz";
       if (lowered.any((e) => e.contains("vegan"))) return "Vegan";
-      if (lowered.any((e) => e.contains("yüksek protein") || e.contains("yuksek protein"))) return "Yüksek Protein";
+      if (lowered.any(
+        (e) => e.contains("yüksek protein") || e.contains("yuksek protein"),
+      ))
+        return "Yüksek Protein";
 
       return tags.first.toString();
     }
@@ -88,21 +97,46 @@ class _FoodSuggestionScreenState extends State<FoodSuggestionScreen> {
     if (user == null) return;
 
     final item = widget.foodRecommendations[currentIndex];
+    final todayKey = DateTime.now().toIso8601String().split("T")[0];
 
-    await FirebaseFirestore.instance.collection("completedRecommendations").add({
-      "uid": user.uid,
-      "itemId": item["id"],
-      "type": "food",
-      "title": item["isim"],
-      "emotion": widget.finalEmotion,
-      "date": FieldValue.serverTimestamp(),
-    });
+    final itemId = item["id"];
+    final title = item["isim"]?.toString() ?? "Besin Önerisi";
+
+    final existing = await FirebaseFirestore.instance
+        .collection("completedRecommendations")
+        .where("uid", isEqualTo: user.uid)
+        .where("itemId", isEqualTo: itemId)
+        .where("type", isEqualTo: "food")
+        .where("dateKey", isEqualTo: todayKey)
+        .limit(1)
+        .get();
+
+    if (existing.docs.isNotEmpty) {
+      if (!mounted) return;
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Bu öneriyi bugün zaten tamamladın")),
+      );
+      return;
+    }
+
+    await FirebaseFirestore.instance
+        .collection("completedRecommendations")
+        .add({
+          "uid": user.uid,
+          "itemId": itemId,
+          "type": "food",
+          "title": title,
+          "emotion": widget.finalEmotion,
+          "dateKey": todayKey,
+          "date": FieldValue.serverTimestamp(),
+        });
 
     if (!mounted) return;
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("Besin önerisi tamamlandı")),
-    );
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(const SnackBar(content: Text("Besin önerisi tamamlandı")));
 
     Navigator.pop(context);
   }
@@ -110,7 +144,9 @@ class _FoodSuggestionScreenState extends State<FoodSuggestionScreen> {
   @override
   Widget build(BuildContext context) {
     final bool hasData = widget.foodRecommendations.isNotEmpty;
-    final dynamic item = hasData ? widget.foodRecommendations[currentIndex] : null;
+    final dynamic item = hasData
+        ? widget.foodRecommendations[currentIndex]
+        : null;
 
     final String title = hasData
         ? _safeText(item["isim"], "Beslenme Önerisi")
@@ -217,30 +253,29 @@ class _FoodSuggestionScreenState extends State<FoodSuggestionScreen> {
                                     flex: 2,
                                     child: Stack(
                                       children: [
-                                        Container(
+                                        SizedBox(
                                           width: double.infinity,
-                                          decoration: BoxDecoration(
-                                            color: AppColors.divider,
-                                            image: imageUrl.isNotEmpty
-                                                ? DecorationImage(
-                                                    image: NetworkImage(imageUrl),
-                                                    fit: BoxFit.cover,
-                                                  )
-                                                : null,
+                                          height: double.infinity,
+                                          child: AppImage(
+                                            imagePath: imageUrl,
+                                            fit: BoxFit.cover,
                                           ),
                                         ),
                                         Positioned(
                                           top: 14,
                                           left: 14,
                                           child: Container(
-                                            constraints: const BoxConstraints(maxWidth: 240),
+                                            constraints: const BoxConstraints(
+                                              maxWidth: 240,
+                                            ),
                                             padding: const EdgeInsets.symmetric(
                                               horizontal: 12,
                                               vertical: 8,
                                             ),
                                             decoration: BoxDecoration(
                                               color: badgeColor,
-                                              borderRadius: BorderRadius.circular(999),
+                                              borderRadius:
+                                                  BorderRadius.circular(999),
                                               boxShadow: AppShadows.soft,
                                             ),
                                             child: Row(
@@ -256,11 +291,13 @@ class _FoodSuggestionScreenState extends State<FoodSuggestionScreen> {
                                                   child: Text(
                                                     badgeText.toUpperCase(),
                                                     maxLines: 2,
-                                                    overflow: TextOverflow.ellipsis,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
                                                     style: const TextStyle(
                                                       color: Colors.white,
                                                       fontSize: 10,
-                                                      fontWeight: FontWeight.w900,
+                                                      fontWeight:
+                                                          FontWeight.w900,
                                                     ),
                                                   ),
                                                 ),
@@ -274,9 +311,15 @@ class _FoodSuggestionScreenState extends State<FoodSuggestionScreen> {
                                   Expanded(
                                     flex: 1,
                                     child: Padding(
-                                      padding: const EdgeInsets.fromLTRB(22, 16, 22, 16),
+                                      padding: const EdgeInsets.fromLTRB(
+                                        22,
+                                        16,
+                                        22,
+                                        16,
+                                      ),
                                       child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           const Text(
                                             "HAFTALIK ÖNERİ",
@@ -321,14 +364,16 @@ class _FoodSuggestionScreenState extends State<FoodSuggestionScreen> {
                                                             id: item["id"] ?? 0,
                                                             type: "food",
                                                             title: title,
-                                                            scientificBenefit: _safeText(
-                                                              item["bilimsel_fayda_detay"],
-                                                              scientificText,
-                                                            ),
-                                                            consumptionAdvice: _safeText(
-                                                              item["tuketim_onerisi"],
-                                                              "Bu besini dengeli şekilde tüketebilirsin.",
-                                                            ),
+                                                            scientificBenefit:
+                                                                _safeText(
+                                                                  item["bilimsel_fayda_detay"],
+                                                                  scientificText,
+                                                                ),
+                                                            consumptionAdvice:
+                                                                _safeText(
+                                                                  item["tuketim_onerisi"],
+                                                                  "Bu besini dengeli şekilde tüketebilirsin.",
+                                                                ),
                                                             imageUrl: imageUrl,
                                                           ),
                                                         ),
@@ -336,23 +381,31 @@ class _FoodSuggestionScreenState extends State<FoodSuggestionScreen> {
                                                     }
                                                   : null,
                                               child: Container(
-                                                padding: const EdgeInsets.symmetric(
-                                                  horizontal: 20,
-                                                  vertical: 11,
-                                                ),
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                      horizontal: 20,
+                                                      vertical: 11,
+                                                    ),
                                                 decoration: BoxDecoration(
-                                                  color: AppColors.primary.withOpacity(0.10),
-                                                  borderRadius: BorderRadius.circular(999),
+                                                  color: AppColors.primary
+                                                      .withOpacity(0.10),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                        999,
+                                                      ),
                                                 ),
                                                 child: const Row(
-                                                  mainAxisSize: MainAxisSize.min,
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
                                                   children: [
                                                     Text(
                                                       "Tüketim Önerisini Gör",
                                                       style: TextStyle(
-                                                        color: AppColors.primary,
+                                                        color:
+                                                            AppColors.primary,
                                                         fontSize: 15,
-                                                        fontWeight: FontWeight.w900,
+                                                        fontWeight:
+                                                            FontWeight.w900,
                                                       ),
                                                     ),
                                                     SizedBox(width: 8),
