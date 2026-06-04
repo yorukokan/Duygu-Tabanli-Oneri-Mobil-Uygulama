@@ -25,10 +25,11 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
   int todayMoodCheckCount = 0;
   String latestMoodCheck = "Yok";
 
-  String todayMood = "normal";
   String todayMoodLabel = "Normal";
 
-  List<String> weeklyEmotions = List.filled(7, "normal");
+  List<String> weeklyMoodHistoryEmotions = List.filled(7, "normal");
+  List<String> weeklyEndDayEmotions = List.filled(7, "normal");
+
   List<Map<String, dynamic>> goodItems = [];
 
   @override
@@ -47,12 +48,12 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
 
     await Future.wait([
       loadCompleted(user.uid),
-      loadWeeklyEvaluations(user.uid),
+      loadWeeklyEndDayEvaluations(user.uid),
+      loadWeeklyMoodHistory(user.uid),
       loadTodayMoodChecks(user.uid),
     ]);
 
     if (!mounted) return;
-
     setState(() => isLoading = false);
   }
 
@@ -79,7 +80,6 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
       final bDate = (b.data()["date"] as Timestamp?)?.toDate();
 
       if (aDate == null || bDate == null) return 0;
-
       return bDate.compareTo(aDate);
     });
 
@@ -93,7 +93,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
     });
   }
 
-  Future<void> loadWeeklyEvaluations(String uid) async {
+  Future<void> loadWeeklyEndDayEvaluations(String uid) async {
     final now = DateTime.now();
 
     final startOfWeek = DateTime(
@@ -102,12 +102,18 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
       now.day,
     ).subtract(Duration(days: now.weekday - 1));
 
+    final endOfWeek = startOfWeek.add(const Duration(days: 7));
+
     final snapshot = await FirebaseFirestore.instance
         .collection("dailyEvaluations")
         .where("uid", isEqualTo: uid)
         .where(
           "createdAt",
           isGreaterThanOrEqualTo: Timestamp.fromDate(startOfWeek),
+        )
+        .where(
+          "createdAt",
+          isLessThan: Timestamp.fromDate(endOfWeek),
         )
         .orderBy("createdAt")
         .get();
@@ -117,7 +123,6 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
     int completed = 0;
     int total = 0;
 
-    String latestMood = "normal";
     String latestLabel = "Normal";
 
     for (final doc in snapshot.docs) {
@@ -127,24 +132,73 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
       if (createdAt == null) continue;
 
       final index = createdAt.weekday - 1;
+      if (index < 0 || index > 6) continue;
 
       emotions[index] = data["endDayEmotion"]?.toString() ?? "normal";
 
       completed += (data["completedCount"] ?? 0) as int;
       total += (data["totalCount"] ?? 0) as int;
 
-      latestMood = data["endDayEmotion"]?.toString() ?? "normal";
       latestLabel = data["endDayMoodLabel"]?.toString() ?? "Normal";
     }
 
     if (!mounted) return;
 
     setState(() {
-      weeklyEmotions = emotions;
+      weeklyEndDayEmotions = emotions;
       weeklyCompleted = completed;
       weeklyTotal = total;
-      todayMood = latestMood;
       todayMoodLabel = latestLabel;
+    });
+  }
+
+  Future<void> loadWeeklyMoodHistory(String uid) async {
+    final now = DateTime.now();
+
+    final startOfWeek = DateTime(
+      now.year,
+      now.month,
+      now.day,
+    ).subtract(Duration(days: now.weekday - 1));
+
+    final endOfWeek = startOfWeek.add(const Duration(days: 7));
+
+    final snapshot = await FirebaseFirestore.instance
+        .collection("moodHistory")
+        .where("uid", isEqualTo: uid)
+        .where(
+          "date",
+          isGreaterThanOrEqualTo: Timestamp.fromDate(startOfWeek),
+        )
+        .where(
+          "date",
+          isLessThan: Timestamp.fromDate(endOfWeek),
+        )
+        .orderBy("date", descending: true)
+        .get();
+
+    final emotions = List<String>.filled(7, "normal");
+    final filledDays = <int>{};
+
+    for (final doc in snapshot.docs) {
+      final data = doc.data();
+
+      final date = (data["date"] as Timestamp?)?.toDate();
+      if (date == null) continue;
+
+      final index = date.weekday - 1;
+      if (index < 0 || index > 6) continue;
+
+      if (filledDays.contains(index)) continue;
+
+      emotions[index] = data["finalEmotion"]?.toString() ?? "normal";
+      filledDays.add(index);
+    }
+
+    if (!mounted) return;
+
+    setState(() {
+      weeklyMoodHistoryEmotions = emotions;
     });
   }
 
@@ -174,14 +228,44 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
   }
 
   String formatMoodText(String value) {
-    if (value.trim().isEmpty) return "Yok";
+    final clean = value.trim().toLowerCase();
 
-    return value
+    if (clean.isEmpty) return "Yok";
+
+    switch (clean) {
+      case "yok":
+        return "Yok";
+      case "harika":
+        return "Harika";
+      case "mutlu":
+        return "Mutlu";
+      case "normal":
+        return "Normal";
+      case "uzgun":
+      case "üzgün":
+        return "Üzgün";
+      case "kizgin":
+      case "kızgın":
+        return "Kızgın";
+      case "yorgun":
+        return "Yorgun";
+      case "heyecanli":
+      case "heyecanlı":
+        return "Heyecanlı";
+      case "sakin":
+        return "Sakin";
+      case "kaygili":
+      case "kaygılı":
+        return "Kaygılı";
+    }
+
+    return clean
         .replaceAll("_", " ")
         .replaceAll("nötr", "Nötr")
         .replaceAll("notr", "Nötr")
         .replaceAll("genel denge", "Genel Denge")
         .replaceAll("heyecan yüksek enerji", "Heyecan / Yüksek Enerji")
+        .replaceAll("heyecan yuksek enerji", "Heyecan / Yüksek Enerji")
         .replaceAll("kaygı anksiyete", "Kaygı / Anksiyete")
         .replaceAll("kaygi anksiyete", "Kaygı / Anksiyete")
         .replaceAll("depresif hüzünlü", "Depresif / Hüzünlü")
@@ -201,25 +285,72 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
   }
 
   double emotionToY(String emotion) {
-    switch (emotion.toLowerCase()) {
+    final e = emotion
+        .trim()
+        .toLowerCase()
+        .replaceAll(" ", "_")
+        .replaceAll("/", "_");
+
+    switch (e) {
       case "harika":
+      case "mutluluk":
         return 10;
+
       case "mutlu":
         return 18;
+
       case "heyecanli":
+      case "heyecanlı":
+      case "heyecan_yüksek_enerji":
+      case "heyecan_yuksek_enerji":
         return 25;
+
       case "sakin":
-        return 35;
+        return 36;
+
       case "normal":
+      case "nötr_genel_denge":
+      case "notr_genel_denge":
         return 50;
+
+      case "odak_eksikliği":
+      case "odak_eksikligi":
+        return 58;
+
+      case "motivasyon_eksikliği":
+      case "motivasyon_eksikligi":
+        return 66;
+
       case "yorgun":
-        return 65;
+      case "düşük_enerji_yorgunluk":
+      case "dusuk_enerji_yorgunluk":
+        return 72;
+
+      case "uyku_huzursuzluk":
+        return 76;
+
       case "kaygili":
-        return 78;
+      case "kaygılı":
+      case "kaygı_anksiyete":
+      case "kaygi_anksiyete":
+        return 82;
+
       case "uzgun":
+      case "üzgün":
+      case "depresif_hüzünlü":
+      case "depresif_huzunlu":
         return 88;
+
       case "kizgin":
-        return 95;
+      case "kızgın":
+      case "öfke_gerginlik":
+      case "ofke_gerginlik":
+        return 94;
+
+      case "yüksek_stres":
+      case "yuksek_stres":
+        return 98;
+
       default:
         return 50;
     }
@@ -295,7 +426,15 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
               fontWeight: FontWeight.w900,
             ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 8),
+          Row(
+            children: [
+              _legendDot(AppColors.primary, "Gün içi analiz"),
+              const SizedBox(width: 14),
+              _legendDot(AppColors.textMuted, "Gün sonu"),
+            ],
+          ),
+          const SizedBox(height: 18),
           SizedBox(
             height: 190,
             child: Row(
@@ -325,7 +464,8 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                 Expanded(
                   child: CustomPaint(
                     painter: ChartPainter(
-                      emotions: weeklyEmotions,
+                      moodEmotions: weeklyMoodHistoryEmotions,
+                      endDayEmotions: weeklyEndDayEmotions,
                       map: emotionToY,
                     ),
                     child: Container(),
@@ -353,6 +493,30 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _legendDot(Color color, String text) {
+    return Row(
+      children: [
+        Container(
+          width: 9,
+          height: 9,
+          decoration: BoxDecoration(
+            color: color,
+            shape: BoxShape.circle,
+          ),
+        ),
+        const SizedBox(width: 6),
+        Text(
+          text,
+          style: const TextStyle(
+            color: AppColors.textMuted,
+            fontSize: 12,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+      ],
     );
   }
 
@@ -660,11 +824,13 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
 }
 
 class ChartPainter extends CustomPainter {
-  final List<String> emotions;
+  final List<String> moodEmotions;
+  final List<String> endDayEmotions;
   final double Function(String) map;
 
   ChartPainter({
-    required this.emotions,
+    required this.moodEmotions,
+    required this.endDayEmotions,
     required this.map,
   });
 
@@ -684,9 +850,38 @@ class ChartPainter extends CustomPainter {
       );
     }
 
+    _drawLine(
+      canvas: canvas,
+      size: size,
+      emotions: endDayEmotions,
+      color: AppColors.textMuted,
+      strokeWidth: 2.2,
+      pointRadius: 3.5,
+    );
+
+    _drawLine(
+      canvas: canvas,
+      size: size,
+      emotions: moodEmotions,
+      color: AppColors.primary,
+      strokeWidth: 3,
+      pointRadius: 4.2,
+    );
+  }
+
+  void _drawLine({
+    required Canvas canvas,
+    required Size size,
+    required List<String> emotions,
+    required Color color,
+    required double strokeWidth,
+    required double pointRadius,
+  }) {
+    if (emotions.isEmpty) return;
+
     final linePaint = Paint()
-      ..color = AppColors.primary
-      ..strokeWidth = 3
+      ..color = color
+      ..strokeWidth = strokeWidth
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round;
 
@@ -695,7 +890,7 @@ class ChartPainter extends CustomPainter {
       ..style = PaintingStyle.fill;
 
     final borderPaint = Paint()
-      ..color = AppColors.primary
+      ..color = color
       ..style = PaintingStyle.stroke
       ..strokeWidth = 2;
 
@@ -718,22 +913,14 @@ class ChartPainter extends CustomPainter {
       final x = i * (size.width / (emotions.length - 1));
       final y = (map(emotions[i]) / 100) * size.height;
 
-      canvas.drawCircle(
-        Offset(x, y),
-        4,
-        pointPaint,
-      );
-
-      canvas.drawCircle(
-        Offset(x, y),
-        4,
-        borderPaint,
-      );
+      canvas.drawCircle(Offset(x, y), pointRadius, pointPaint);
+      canvas.drawCircle(Offset(x, y), pointRadius, borderPaint);
     }
   }
 
   @override
   bool shouldRepaint(covariant ChartPainter oldDelegate) {
-    return oldDelegate.emotions != emotions;
+    return oldDelegate.moodEmotions != moodEmotions ||
+        oldDelegate.endDayEmotions != endDayEmotions;
   }
 }

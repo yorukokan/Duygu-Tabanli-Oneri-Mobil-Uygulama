@@ -21,7 +21,35 @@ class ResultScreen extends StatelessWidget {
   });
 
   String _formatEmotionText(String text) {
-    if (text.trim().isEmpty) return "Bilinmiyor";
+    final clean = text.trim().toLowerCase();
+
+    if (clean.isEmpty) return "Bilinmiyor";
+
+    switch (clean) {
+      case "ai analizi yok":
+        return "AI Analizi Yok";
+
+      case "angry":
+        return "Öfke";
+
+      case "disgust":
+        return "İğrenme";
+
+      case "fear":
+        return "Korku / Kaygı";
+
+      case "happy":
+        return "Mutluluk";
+
+      case "sad":
+        return "Üzgün";
+
+      case "surprise":
+        return "Şaşkın";
+
+      case "neutral":
+        return "Nötr";
+    }
 
     return text
         .replaceAll("_", " ")
@@ -69,8 +97,9 @@ class ResultScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String formattedAiEmotion =
-        aiEmotion == "AI Analizi Yok" ? "AI Analizi Yok" : _formatEmotionText(aiEmotion);
+    final String formattedAiEmotion = aiEmotion == "AI Analizi Yok"
+        ? "AI Analizi Yok"
+        : _formatEmotionText(aiEmotion);
 
     final String formattedSelectedEmotion = _formatEmotionText(selectedEmotion);
     final String formattedFinalEmotion = _formatEmotionText(finalEmotion);
@@ -210,11 +239,7 @@ class ResultScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 30),
-                    Icon(
-                      finalIcon,
-                      size: 92,
-                      color: AppColors.primary,
-                    ),
+                    Icon(finalIcon, size: 92, color: AppColors.primary),
                     const SizedBox(height: 24),
                     Text(
                       "Verileriniz analiz edildi ve durumunuz \"$formattedFinalEmotion\" olarak doğrulandı.",
@@ -237,7 +262,8 @@ class ResultScreen extends StatelessWidget {
                               builder: (context) => RecommendationsScreen(
                                 finalEmotion: formattedFinalEmotion,
                                 foodRecommendations: foodRecommendations,
-                                activityRecommendations: activityRecommendations,
+                                activityRecommendations:
+                                    activityRecommendations,
                               ),
                             ),
                           );
@@ -300,11 +326,7 @@ class ResultScreen extends StatelessWidget {
               color: iconBg,
               borderRadius: BorderRadius.circular(22),
             ),
-            child: Icon(
-              icon,
-              color: iconColor,
-              size: 40,
-            ),
+            child: Icon(icon, color: iconColor, size: 40),
           ),
           const SizedBox(height: 16),
           Text(
